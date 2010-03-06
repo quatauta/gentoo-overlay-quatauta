@@ -1,0 +1,30 @@
+--- a/configure.in	2009-09-30 19:53:47.758415266 +0200
++++ b/configure.in	2009-09-30 19:55:57.780409224 +0200
+@@ -1725,12 +1725,12 @@
+     rubyw_install_name="$RUBYW_INSTALL_NAME"
+     ;;
+ esac
+-RUBY_LIB_PREFIX=`eval echo \\"${libdir}/ruby\\"`
++RUBY_LIB_PREFIX=`eval echo \\"${libdir}/rubyee\\"`
+ 
+ AC_ARG_WITH(sitedir,
+-	    [  --with-sitedir=DIR      site libraries in DIR [[LIBDIR/ruby/site_ruby]]],
++	    [  --with-sitedir=DIR      site libraries in DIR [[LIBDIR/rubyee/site_ruby]]],
+             [sitedir=$withval],
+-            [sitedir='${libdir}/ruby/site_ruby'])
++            [sitedir='${libdir}/rubyee/site_ruby'])
+ SITE_DIR=`eval echo \\"${sitedir}\\"`
+ 
+ case "$target_os" in
+@@ -1751,9 +1751,9 @@
+ AC_DEFINE_UNQUOTED(RUBY_SITE_LIB2, "${RUBY_SITE_LIB_PATH2}")
+ 
+ AC_ARG_WITH(vendordir,
+-	    [  --with-vendordir=DIR    vendor libraries in DIR [[LIBDIR/ruby/vendor_ruby]]],
++	    [  --with-vendordir=DIR    vendor libraries in DIR [[LIBDIR/rubyee/vendor_ruby]]],
+             [vendordir=$withval],
+-            [vendordir='${libdir}/ruby/vendor_ruby'])
++            [vendordir='${libdir}/rubyee/vendor_ruby'])
+ VENDOR_DIR=`eval echo \\"${vendordir}\\"`
+ case "$target_os" in
+   cygwin*|mingw*|*djgpp*|os2-emx*)

@@ -1,0 +1,34 @@
+diff -dNru genkernel-3.4.10.906.orig/defaults/initrd.scripts genkernel-3.4.10.906/defaults/initrd.scripts
+--- genkernel-3.4.10.906.orig/defaults/initrd.scripts	2009-07-20 00:10:44.000000000 +0200
++++ genkernel-3.4.10.906/defaults/initrd.scripts	2009-12-25 19:06:50.593028903 +0100
+@@ -863,6 +863,18 @@
+ 	return 0
+ }
+ 
++suspend_resume() {
++	which resume > /dev/null 2>&1 || return
++	local args
++	local features="$(resume --version | grep FEATURES)"
++	[ -n "${REAL_RESUME}" ] && args="${args} --resume_device=\"${REAL_RESUME}\""
++	if ! grep suspend_noui /proc/cmdline > /dev/null 2>&1; then
++		echo "${features}" | grep "fbsplash" > /dev/null && grep "splash=" /proc/cmdline > /dev/null && args="${args} --parameter=\"splash=y\""
++	fi
++	[ -c /dev/snapshot ] || mknod /dev/snapshot c 10 231
++	eval resume ${args}
++}
++
+ tuxonice_resume() {
+ 	[ -d /proc/suspend2 -o -d /sys/power/suspend2 -o -d /sys/power/tuxonice ] || return
+ 
+diff -dNru genkernel-3.4.10.906.orig/defaults/linuxrc genkernel-3.4.10.906/defaults/linuxrc
+--- genkernel-3.4.10.906.orig/defaults/linuxrc	2009-02-04 14:30:48.000000000 +0100
++++ genkernel-3.4.10.906/defaults/linuxrc	2009-12-25 19:07:19.975927725 +0100
+@@ -300,7 +300,7 @@
+ 		esac
+ 
+ 		swsusp_resume
+-#		suspend_resume
++		suspend_resume
+ 		tuxonice_resume
+ 	fi
+ fi
