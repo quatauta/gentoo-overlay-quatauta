@@ -6,34 +6,29 @@ EAPI="1"
 
 inherit eutils
 
-DESCRIPTION="Implementation of tone mapping operators for PFStools"
-HOMEPAGE="http://pfstools.sourceforge.net/pfstmo.html"
-SRC_URI="mirror://sourceforge/pfstools/pfstmo/${PV}/${P}.tar.gz"
+DESCRIPTION="Photometric calibration of HDR and LDR cameras"
+HOMEPAGE="http://pfstools.sourceforge.net/pfscalibration.html"
+SRC_URI="mirror://sourceforge/pfstools/pfscalibration/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="debug fftw"
+IUSE="debug"
 
-DEPEND="
-	>=media-gfx/pfstools-1.8.2
-	>=sci-libs/gsl-1.14
-	fftw? ( sci-libs/fftw:3.0 )
-	"
+DEPEND=">=media-gfx/pfstools-1.8.1"
 
 RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}/${P}-mantiuk08-auto_ptr.patch"
 }
 
 src_compile() {
 	econf \
 		$(use_enable debug) \
 		|| die "configure failed"
-	emake -j1 || die "make failed"
+	emake || die "make failed"
 }
 
 src_install() {

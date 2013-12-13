@@ -4,20 +4,21 @@
 
 # unicode python script from debian
 
-DESCRIPTION="unicode is a simple command line utility that displays properties for a given unicode character, or searches unicode database for a given namenext generation distributed version control"
+DESCRIPTION="Display properties for unicode character or search unicode database"
 HOMEPAGE="http://packages.debian.org/unstable/utils/unicode"
 SRC_URI="ftp://ftp.debian.org/debian/pool/main/u/unicode/${PN}_${PV}.tar.gz"
 
-KEYWORDS="x86"
+KEYWORDS="x86 amd64"
 LICENSE="GPL-2"
 SLOT="0"
 
 IUSE=""
 DEPEND=">=dev-lang/python-2.2"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
-	wget -O ${WORKDIR}/${P}/UnicodeData.txt http://unicode.org/Public/UNIDATA/UnicodeData.txt
+	wget -O "${WORKDIR}/${P}/UnicodeData.txt" http://unicode.org/Public/UNIDATA/UnicodeData.txt
 }
 
 src_install() {

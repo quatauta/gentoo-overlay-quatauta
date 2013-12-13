@@ -9,7 +9,7 @@ HOMEPAGE="http://mailcheck.sourceforge.net"
 SRC_URI="mirror://sourceforge/mailcheck/${PN}_${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
