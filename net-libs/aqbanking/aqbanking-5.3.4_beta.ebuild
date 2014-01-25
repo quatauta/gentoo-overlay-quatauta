@@ -20,7 +20,7 @@ IUSE="chipcard debug doc examples gtk ofx"
 
 RDEPEND=">=app-misc/ktoblzcheck-1.39
 	>=dev-libs/gmp-5
-	>=sys-libs/gwenhywfar-4.9.0[gtk?]
+	>=sys-libs/gwenhywfar-4.9.0_beta[gtk?]
 	virtual/libintl
 	ofx? ( >=dev-libs/libofx-0.9.5 )
 	chipcard? ( >=sys-libs/libchipcard-5.0.2 )"
