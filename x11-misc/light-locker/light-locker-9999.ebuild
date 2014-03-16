@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/the-cavalry/light-locker.git"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="X consolekit nls static-libs systemd upower"
+IUSE="X consolekit nls static-libs systemd upower late-locking +lock-on-suspend"
 
 RDEPEND="
 	x11-misc/lightdm
@@ -42,6 +42,8 @@ src_configure() {
 		$(use_with X mit-ext)
 		$(use_with consolekit console-kit)
 		$(use_with upower)
+		$(use_enable late-locking)
+		$(use_enable lock-on-suspend)
 	)
 
 	autotools-utils_src_configure
