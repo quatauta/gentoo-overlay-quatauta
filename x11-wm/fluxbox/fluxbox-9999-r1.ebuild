@@ -81,8 +81,8 @@ src_compile() {
 		for MAN in *.[0-9] ; do
 			cp "${MAN}" "../${MAN}.in"
 		done
-		cd "${S}"
-		emake -C doc
+		# cd "${S}"
+		# emake -C doc
 	)
 
 	emake
@@ -91,7 +91,7 @@ src_compile() {
 	mkdir -p "${T}/home/.fluxbox" || die "mkdir home failed"
 	MENUFILENAME="${S}/data/menu" MENUTITLE="Fluxbox ${PV}" \
 		CHECKINIT="no. go away." HOME="${T}/home" \
-		"${S}/util/fluxbox-generate_menu" -is -ds \
+		/bin/sh "${S}/util/fluxbox-generate_menu" -is -ds \
 		|| die "menu generation failed"
 	eend $?
 }
