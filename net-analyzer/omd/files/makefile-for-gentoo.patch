@@ -1,0 +1,24 @@
+--- Makefile.orig	2014-04-21 09:08:19.575012743 +0200
++++ Makefile	2014-04-21 09:12:06.872020016 +0200
+@@ -70,11 +70,9 @@
+ 	done ; wait ; echo "FINISHED."
+ 
+ pack:
+-	rm -rf $(DESTDIR)
+ 	mkdir -p $(DESTDIR)$(OMD_PHYSICAL_BASE)
+ 	A="$(OMD_PHYSICAL_BASE)" ; ln -s $${A:1} $(DESTDIR)/omd
+ 	@set -e ; cd packages ; for p in $(PACKAGES) ; do \
+-            $(MAKE) -C $$p DESTDIR=$(DESTDIR) install ; \
+             for hook in $$(cd $$p ; ls *.hook 2>/dev/null) ; do \
+                 mkdir -p $(DESTDIR)$(OMD_ROOT)/lib/omd/hooks ; \
+                 install -m 755 $$p/$$hook $(DESTDIR)$(OMD_ROOT)/lib/omd/hooks/$${hook%.hook} ; \
+@@ -125,9 +123,6 @@
+ 	# Remove site-specific directories that went under /omd/version
+ 	rm -rf $(DESTDIR)/{var,tmp}
+ 
+-	# Pack the whole stuff into a tarball
+-	tar czf $(BIN_TGZ) --owner=root --group=root -C $(DESTDIR) .
+-
+ clean:
+ 	rm -rf $(DESTDIR)
+ 	@for p in packages/* ; do \

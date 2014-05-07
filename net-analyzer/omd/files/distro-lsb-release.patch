@@ -1,0 +1,20 @@
+--- distro.orig	2014-04-21 07:59:14.700641262 +0200
++++ distro	2014-04-21 08:13:08.154985355 +0200
+@@ -112,4 +112,17 @@
+     fi
+ fi
+ 
++# /usr/bin/lsb_release as last resort
++LSB_RELEASE="$(which lsb_release 2>/dev/null)"
++
++if [ -x "${LSB_RELEASE}" ] ; then
++     ID="$("${LSB_RELEASE}" -i | awk '{ print $NF }' | tr '[a-z]' '[A-Z]')"
++    REL="$("${LSB_RELEASE}" -r | awk '{ print $NF }' | tr '[a-z]' '[A-Z]')"
++
++    if [ -n "${ID}" ] && [ -n "${REL}" ] ; then
++        echo "${ID}${SEP}${REL}"
++        exit 0
++    fi
++fi
++
+ exit 1
