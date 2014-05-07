@@ -1,0 +1,22 @@
+# ChangeLog for app-editors/emacs-vcs
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*emacs-vcs-24.4.9999 (06 Apr 2014)
+
+  06 Apr 2014; root <root@storsten.schoemer.local>
+  +emacs-vcs-24.4.9999.ebuild:
+  24.4.9999 with git sources
+
+*emacs-vcs-24.3.9999-r50 (21 Mar 2014)
+
+  21 Mar 2014; root <root@storsten.schoemer.local>
+  -emacs-vcs-24.3.9999.ebuild, +emacs-vcs-24.3.9999-r50.ebuild:
+  Updated app-editors/emacs-vcs-24.3.9999-r50 with git repository
+
+*emacs-vcs-24.3.9999 (21 Feb 2014)
+
+  21 Feb 2014; root <root@storsten.schoemer.local>
+  +emacs-vcs-24.3.9999.ebuild:
+  Changed app-editors/emacs-vcs to git
+

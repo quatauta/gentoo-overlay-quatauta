@@ -1,0 +1,28 @@
+# ChangeLog for net-libs/aqbanking
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+*aqbanking-5.4.3_beta (04 May 2014)
+*aqbanking-5.4.2_beta (04 May 2014)
+*aqbanking-5.4.1_beta (04 May 2014)
+*aqbanking-5.4.0_beta (04 May 2014)
+*aqbanking-5.3.6_beta (04 May 2014)
+*aqbanking-5.3.5_beta (04 May 2014)
+
+  04 May 2014; root <root@storsten.schoemer.local>
+  +aqbanking-5.3.5_beta.ebuild, +aqbanking-5.3.6_beta.ebuild,
+  +aqbanking-5.4.0_beta.ebuild, +aqbanking-5.4.1_beta.ebuild,
+  +aqbanking-5.4.2_beta.ebuild, +aqbanking-5.4.3_beta.ebuild:
+  Updated net-libs/aqbanking and sys-libs/gwenhywfar to current versions.
+
+  25 Jan 2014; root <root@storsten.schoemer.local>
+  aqbanking-5.3.4_beta.ebuild:
+  aqbanking-5.3.4_beta: Update depenency on sys-libs/gwenhywfar to
+  >=4.9.0_beta
+
+*aqbanking-5.3.4_beta (25 Jan 2014)
+
+  25 Jan 2014; root <root@storsten.schoemer.local>
+  +aqbanking-5.3.4_beta.ebuild:
+  5.3.4_beta and sys-libs/gwenhywfar-4.9.0
+

@@ -1,0 +1,22 @@
+# ChangeLog for x11-misc/light-locker
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  16 Mar 2014; root <Daniel Schoemer daniel.schoemer@gmx.net>
+  -light-locker-1.0.0.ebuild, -light-locker-1.1.0.ebuild,
+  -light-locker-1.2.0.ebuild, light-locker-1.3.0.ebuild,
+  light-locker-9999.ebuild:
+  Updated x11-misc/light-locker-1.3.0 to not use late locking and added use
+  flags late-locking (off) and lock-on-suspend (on). Removed older releases.
+
+*light-locker-9999 (16 Mar 2014)
+*light-locker-1.3.0 (16 Mar 2014)
+*light-locker-1.2.0 (16 Mar 2014)
+*light-locker-1.1.0 (16 Mar 2014)
+*light-locker-1.0.0 (16 Mar 2014)
+
+  16 Mar 2014; root <root@storsten.schoemer.local> +light-locker-1.0.0.ebuild,
+  +light-locker-1.1.0.ebuild, +light-locker-1.2.0.ebuild,
+  +light-locker-1.3.0.ebuild, +light-locker-9999.ebuild:
+  Added x11-misc/light-locker
+
