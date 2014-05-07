@@ -1,0 +1,6 @@
+#!/bin/bash
+
+REPO_NAME_FILE="${0%/*}/profiles/repo_name"
+REPO_NAME="$(cat "${REPO_NAME_FILE}")"
+
+egencache --update --repo="${REPO_NAME}" --sign-manifests=n --update-use-local-desc --update-changelogs --update-manifests
