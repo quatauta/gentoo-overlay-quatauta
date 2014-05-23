@@ -1,0 +1,23 @@
+#####################################################
+#
+# GitLab version    : 5.x - 6.x
+# Contributors      : davispuh, mtorromeo, axilleas, boeserwolf91
+# Downloaded from   : https://github.com/gitlabhq/gitlab-recipes/tree/master/init/systemd
+#
+####################################################
+
+[Unit]
+Description=GitLab Sidekiq Worker
+
+[Service]
+User=@USER@
+WorkingDirectory=@GITLAB_BASE@
+Environment=RAILS_ENV=production
+SyslogIdentifier=gitlab-sidekiq
+PIDFile=@GITLAB_BASE@/tmp/pids/sidekiq.pid
+
+ExecStart=/usr/bin/bundle exec "sidekiq -q post_receive,mailer,system_hook,project_web_hook,gitlab_shell,common,default -e ${RAILS_ENV} -P tmp/pids/sidekiq.pid -L log/sidekiq.log >> log/sidekiq.log 2>&1"
+ExecStop=/usr/bin/bundle exec "sidekiqctl stop tmp/pids/sidekiq.pid >> log/sidekiq.log 2>&1"
+
+[Install]
+WantedBy=gitlab.target

@@ -1,0 +1,22 @@
+# ChangeLog for www-apps/gitlabhq
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  20 Apr 2014; root <Daniel Schoemer daniel.schoemer@gmx.net>
+  -files/config.ssh, -files/gitlab-sidekiq.service,
+  -files/gitlab-support.init, -files/gitlab-unicorn.init,
+  -files/gitlab-unicorn.service, -files/gitlab.logrotate,
+  -files/gitlab.target, -files/gitlabhq-6.4.3-fix-checks-gentoo.patch,
+  -files/gitlabhq-6.4.3.init, -gitlabhq-6.4.3.ebuild:
+  Removed gitlab-shell and gitlabhq
+
+*gitlabhq-6.4.3 (27 Dec 2013)
+
+  27 Dec 2013; root <root@storsten.schoemer.local> +files/config.ssh,
+  +files/gitlab-sidekiq.service, +files/gitlab-support.init,
+  +files/gitlab-unicorn.init, +files/gitlab-unicorn.service,
+  +files/gitlab.logrotate, +files/gitlab.target,
+  +files/gitlabhq-6.4.3-fix-checks-gentoo.patch, +files/gitlabhq-6.4.3.init,
+  +gitlabhq-6.4.3.ebuild:
+  Added ebuilds to gitlab.
+
