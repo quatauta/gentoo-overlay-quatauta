@@ -14,7 +14,7 @@ EAPI="5"
 USE_RUBY="ruby19 ruby20 ruby21"
 PYTHON_COMPAT=( python{2_7,3_{1,2,3}} )
 
-inherit eutils python-r1 ruby-ng user
+inherit eutils python-r1 ruby-ng systemd user
 
 DESCRIPTION="GitLab is a free project and repository management application"
 HOMEPAGE="https://github.com/gitlabhq/gitlabhq"
@@ -219,7 +219,9 @@ all_ruby_install() {
 
 	newinitd "${T}/${rcscript}" "${MY_NAME}-${SLOT}"
 
-	cp "${FILESDIR}"/gitlab*.{service,target} "${T}" || die
+	## systemd units
+
+	cp "${FILESDIR}"/gitlab*.{service,target} "${T}" || die "failed to copy systemd units"
 	sed -i \
 		-e "s|@USER@|${MY_USER}|" \
 		-e "s|@SLOT@|${SLOT}|" \
@@ -227,11 +229,11 @@ all_ruby_install() {
 		-e "s|@LOGS_DIR@|${logs}|" \
 		-e "s|@QUEUES@|${SIDEKIQ_QUEUES}|" \
 		"${T}"/gitlab*.{service,target} \
-		|| die "failed to filter ${rcscript}"
-	for unit in "${T}"/gitlab*.{service,target} ; do
-		systemd_newunit "${unit}"
-	done
-	systemd_newtmpfilesd "${FILESDIR}/gitlab.tmpfiles" gitlab.conf
+		|| die "failed to filter systemd units"
+	systemd_newunit "${T}/gitlab.target"          "gitlab.target"          || die "failed to install systemd unit gitlab.target"
+	systemd_newunit "${T}/gitlab-sidekiq.service" "gitlab-sidekiq.service" || die "failed to install systemd unit gitlab-sidekiq.service"
+	systemd_newunit "${T}/gitlab-unicorn.service" "gitlab-unicorn.service" || die "failed to install systemd unit gitlab-unicorn.service"
+	systemd_newtmpfilesd "${FILESDIR}/gitlab.tmpfiles" gitlab.conf || die "failed to install tmpfiles conf"
 }
 
 pkg_postinst() {
