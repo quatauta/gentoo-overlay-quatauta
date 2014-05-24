@@ -1,0 +1,13 @@
+# ChangeLog for dev-vcs/gitlab-shell
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  20 Apr 2014; root <Daniel Schoemer daniel.schoemer@gmx.net>
+  -gitlab-shell-1.8.0.ebuild:
+  Removed gitlab-shell and gitlabhq
+
+*gitlab-shell-1.8.0 (27 Dec 2013)
+
+  27 Dec 2013; root <root@storsten.schoemer.local> +gitlab-shell-1.8.0.ebuild:
+  Added ebuilds to gitlab.
+
