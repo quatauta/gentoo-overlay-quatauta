@@ -2,6 +2,11 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*nginx-1.7.1 (27 May 2014)
+
+  27 May 2014; Daniel Schömer <daniel.schoemer@gmx.net> +nginx-1.7.1.ebuild:
+  www-server/nginx-1.7.1: Upstream version bump
+
 *nginx-1.7.0-r1 (07 May 2014)
 
   07 May 2014; Daniel Schömer <daniel.schoemer@gmx.net>
