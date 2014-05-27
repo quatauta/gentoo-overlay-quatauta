@@ -2,6 +2,14 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*gitlab-shell-1.9.3-r1 (24 May 2014)
+
+  24 May 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  +files/gitlab-shell-1.7.1-paths-from-config.patch,
+  +files/gitlab-shell-1.8.0-redis-db-option.patch,
+  +gitlab-shell-1.9.3-r1.ebuild:
+  Added gitlab-shell with ruby targets 1.9, 2.0 and 2.1
+
   20 Apr 2014; root <Daniel Schoemer daniel.schoemer@gmx.net>
   -gitlab-shell-1.8.0.ebuild:
   Removed gitlab-shell and gitlabhq
