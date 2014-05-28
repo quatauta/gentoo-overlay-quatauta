@@ -24,7 +24,7 @@ DEVEL_KIT_MODULE_URI="https://github.com/simpl/ngx_devel_kit/archive/v${DEVEL_KI
 DEVEL_KIT_MODULE_WD="${WORKDIR}/ngx_devel_kit-${DEVEL_KIT_MODULE_PV}"
 
 # http_uploadprogress (https://github.com/masterzen/nginx-upload-progress-module, BSD-2 license)
-HTTP_UPLOAD_PROGRESS_MODULE_PV="0.9.0"
+HTTP_UPLOAD_PROGRESS_MODULE_PV="0.9.1"
 HTTP_UPLOAD_PROGRESS_MODULE_P="ngx_http_upload_progress-${HTTP_UPLOAD_PROGRESS_MODULE_PV}-r1"
 HTTP_UPLOAD_PROGRESS_MODULE_URI="https://github.com/masterzen/nginx-upload-progress-module/archive/v${HTTP_UPLOAD_PROGRESS_MODULE_PV}.tar.gz"
 HTTP_UPLOAD_PROGRESS_MODULE_WD="${WORKDIR}/nginx-upload-progress-module-${HTTP_UPLOAD_PROGRESS_MODULE_PV}"
@@ -115,9 +115,9 @@ HTTP_PUSH_STREAM_MODULE_URI="https://github.com/wandenberg/nginx-push-stream-mod
 HTTP_PUSH_STREAM_MODULE_WD="${WORKDIR}/nginx-push-stream-module-${HTTP_PUSH_STREAM_MODULE_PV}"
 
 # spnego-http-auth-nginx-module (https://github.com/stnoonan/spnego-http-auth-nginx-module, BSD license)
-HTTP_SPNEGO_AUTH_MODULE_PV="1.0.0"
+HTTP_SPNEGO_AUTH_MODULE_PV="master"
 HTTP_SPNEGO_AUTH_MODULE_P="ngx_http_spnego_auth-${HTTP_SPNEGO_AUTH_MODULE_PV}"
-HTTP_SPNEGO_AUTH_MODULE_URI="https://github.com/stnoonan/spnego-http-auth-nginx-module/archive/v${HTTP_SPNEGO_AUTH_MODULE_PV}.tar.gz"
+HTTP_SPNEGO_AUTH_MODULE_URI="https://github.com/stnoonan/spnego-http-auth-nginx-module/archive/${HTTP_SPNEGO_AUTH_MODULE_PV}.tar.gz"
 HTTP_SPNEGO_AUTH_MODULE_WD="${WORKDIR}/spnego-http-auth-nginx-module-${HTTP_SPNEGO_AUTH_MODULE_PV}"
 
 inherit eutils ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator
@@ -213,7 +213,7 @@ CDEPEND="
 	nginx_modules_http_metrics? ( dev-libs/yajl )
 	nginx_modules_http_dav_ext? ( dev-libs/expat )
 	nginx_modules_http_security? ( >=dev-libs/libxml2-2.7.8 dev-libs/apr-util www-servers/apache )
-	nginx_modules_http_spnego_auth? ( virtual/krb5 )"
+	nginx_modules_http_spnego_auth? ( virtual/krb5 !app-crypt/heimdal )"
 RDEPEND="${CDEPEND}"
 DEPEND="${CDEPEND}
 	arm? ( dev-libs/libatomic_ops )
