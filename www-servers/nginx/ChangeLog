@@ -2,6 +2,21 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  23 Jun 2014; Daniel Schömer <daniel.schoemer@gmx.net> nginx-1.7.2-r1.ebuild:
+  Typo
+
+  23 Jun 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  +files/check_1.7.2+.patch, +files/nginx.logrotate-r1,
+  +files/upstream-check-1.5.13.patch, +files/upstream-check-1.5.8.patch:
+  Copied filesdir from Gentoo Portage tree
+
+*nginx-1.7.2-r1 (23 Jun 2014)
+
+  23 Jun 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  +nginx-1.7.2-r1.ebuild:
+  www-servers/ngin: Updated ebuild for www-servers/ngin-1.7.2 from gentoo
+  portage.
+
 *nginx-1.7.2 (17 Jun 2014)
 
   17 Jun 2014; Daniel Schömer <daniel.schoemer@gmx.net> +nginx-1.7.2.ebuild:
