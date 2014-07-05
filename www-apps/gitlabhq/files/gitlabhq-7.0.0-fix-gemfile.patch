@@ -1,7 +1,7 @@
-diff -ur gitlabhq-6.8.2.orig/Gemfile gitlabhq-6.8.2/Gemfile
---- gitlabhq-6.8.2.orig/Gemfile	2014-05-12 11:15:38.000000000 +0200
-+++ gitlabhq-6.8.2/Gemfile	2014-05-22 00:21:48.158938691 +0200
-@@ -142,6 +142,10 @@
+diff -ur gitlabhq-7.0.0.orig/Gemfile gitlabhq-7.0.0/Gemfile
+--- gitlabhq-7.0.0.orig/Gemfile	2014-05-12 11:15:38.000000000 +0200
++++ gitlabhq-7.0.0/Gemfile	2014-05-22 00:21:48.158938691 +0200
+@@ -150,6 +150,10 @@
  # Sanitize user input
  gem "sanitize", '~> 2.0'
  
@@ -12,7 +12,7 @@ diff -ur gitlabhq-6.8.2.orig/Gemfile gitlabhq-6.8.2/Gemfile
  # Protect against bruteforcing
  gem "rack-attack"
  
-@@ -151,7 +155,6 @@
+@@ -162,7 +168,6 @@
  gem "sass-rails", '~> 4.0.2'
  gem "coffee-rails"
  gem "uglifier"
@@ -20,9 +20,9 @@ diff -ur gitlabhq-6.8.2.orig/Gemfile gitlabhq-6.8.2/Gemfile
  gem 'turbolinks'
  gem 'jquery-turbolinks'
  
-diff -ur gitlabhq-6.8.2.orig/Gemfile.lock gitlabhq-6.8.2/Gemfile.lock
---- gitlabhq-6.8.2.orig/Gemfile.lock	2014-05-12 11:15:38.000000000 +0200
-+++ gitlabhq-6.8.2/Gemfile.lock	2014-05-22 00:24:39.954746019 +0200
+diff -ur gitlabhq-7.0.0.orig/Gemfile.lock gitlabhq-7.0.0/Gemfile.lock
+--- gitlabhq-7.0.0.orig/Gemfile.lock	2014-05-12 11:15:38.000000000 +0200
++++ gitlabhq-7.0.0/Gemfile.lock	2014-05-22 00:24:39.954746019 +0200
 @@ -1,3 +1,10 @@
 +GIT
 +  remote: https://github.com/brianmario/charlock_holmes.git
@@ -34,15 +34,15 @@ diff -ur gitlabhq-6.8.2.orig/Gemfile.lock gitlabhq-6.8.2/Gemfile.lock
  GEM
    remote: https://rubygems.org/
    specs:
-@@ -60,7 +67,6 @@
+@@ -61,7 +68,6 @@
        json (>= 1.7)
      celluloid (0.15.2)
        timers (~> 1.1.0)
 -    charlock_holmes (0.6.9.4)
-     cliver (0.2.2)
+     cliver (0.3.2)
      code_analyzer (0.4.3)
        sexp_processor
-@@ -267,7 +273,6 @@
+@@ -270,7 +276,6 @@
        addressable (~> 2.3)
      letter_opener (1.1.2)
        launchy (~> 2.2)
@@ -50,7 +50,7 @@ diff -ur gitlabhq-6.8.2.orig/Gemfile.lock gitlabhq-6.8.2/Gemfile.lock
      listen (2.3.1)
        celluloid (>= 0.15.2)
        rb-fsevent (>= 0.9.3)
-@@ -402,7 +407,6 @@
+@@ -411,7 +416,6 @@
        redis-store (~> 1.1.0)
      redis-store (1.1.4)
        redis (>= 2.2)
@@ -58,7 +58,7 @@ diff -ur gitlabhq-6.8.2.orig/Gemfile.lock gitlabhq-6.8.2/Gemfile.lock
      require_all (1.3.2)
      rest-client (1.6.7)
        mime-types (>= 1.16)
-@@ -496,9 +500,6 @@
+@@ -508,9 +512,6 @@
      term-ansicolor (1.2.2)
        tins (~> 0.8)
      test_after_commit (0.2.2)
@@ -68,15 +68,15 @@ diff -ur gitlabhq-6.8.2.orig/Gemfile.lock gitlabhq-6.8.2/Gemfile.lock
      thin (1.6.1)
        daemons (>= 1.0.9)
        eventmachine (>= 1.0.0)
-@@ -567,6 +568,7 @@
+@@ -582,6 +583,7 @@
    bootstrap-sass (~> 3.0)
-   capybara
+   capybara (~> 2.2.1)
    carrierwave
 +  charlock_holmes!
    coffee-rails
    colored
    coveralls
-@@ -654,7 +656,6 @@
+@@ -674,7 +676,6 @@
    stamp
    state_machine
    test_after_commit

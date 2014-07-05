@@ -200,7 +200,6 @@ all_ruby_install() {
 
 	# fix permissions
 	fowners -R ${MY_USER}:${MY_USER} ${dest} ${temp} ${logs}
-	fperms +x script/{rails,check}
 
 	## RC script ##
 
