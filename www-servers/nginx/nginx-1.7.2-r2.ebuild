@@ -132,7 +132,7 @@ HTTP_SPNEGO_AUTH_MODULE_P="ngx_http_spnego_auth-${HTTP_SPNEGO_AUTH_MODULE_PV}"
 HTTP_SPNEGO_AUTH_MODULE_URI="https://github.com/stnoonan/spnego-http-auth-nginx-module/archive/${HTTP_SPNEGO_AUTH_MODULE_PV}.tar.gz"
 HTTP_SPNEGO_AUTH_MODULE_WD="${WORKDIR}/spnego-http-auth-nginx-module-${HTTP_SPNEGO_AUTH_MODULE_PV}"
 
-inherit eutils ssl-cert toolchain-funcs perl-module flag-o-matic user systemd versionator
+inherit eutils ssl-cert toolchain-funcs perl-module flag-o-matic pax-utils user systemd versionator
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="http://nginx.org"
@@ -503,6 +503,7 @@ src_compile() {
 	# https://bugs.gentoo.org/286772
 	export LANG=C LC_ALL=C
 	emake LINK="${CC} ${LDFLAGS}" OTHERLDFLAGS="${LDFLAGS}"
+	pax-mark m objs/nginx
 }
 
 src_install() {
