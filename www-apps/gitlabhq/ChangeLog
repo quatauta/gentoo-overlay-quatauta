@@ -2,6 +2,18 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*gitlabhq-7.0.0 (05 Jul 2014)
+
+  05 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  -files/gitlabhq-6.8.2-email-custom-reply_to.patch,
+  -files/gitlabhq-6.8.2-fix-gemfile.patch,
+  -files/gitlabhq-6.8.2-fix-project-name-regex.patch,
+  +files/gitlabhq-7.0.0-email-custom-reply_to.patch,
+  +files/gitlabhq-7.0.0-fix-gemfile.patch,
+  +files/gitlabhq-7.0.0-fix-project-name-regex.patch,
+  -gitlabhq-6.8.2-r1.ebuild, +gitlabhq-7.0.0.ebuild:
+  Version bump to 7.0.0
+
   23 May 2014; Daniel Schömer <daniel.schoemer@gmx.net>
   gitlabhq-6.8.2-r1.ebuild:
   Inherrit systemd to use systemd_newunit and systemd_newtmpfilesd. Call them
