@@ -2,6 +2,9 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  09 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net> gitlabhq-7.0.0.ebuild:
+  www-apps/gitlab: changed slot from 6 to 7
+
 *gitlabhq-7.0.0 (05 Jul 2014)
 
   05 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
