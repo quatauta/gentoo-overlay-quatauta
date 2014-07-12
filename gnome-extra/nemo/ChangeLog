@@ -2,6 +2,14 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  -files/0001-Use-gksu-instead-of-pkexec-until-systemd-glib-whatev.patch:
+  Removed old ebuilds
+
+  12 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net> -nemo-2.0.6.ebuild,
+  -nemo-2.0.8.ebuild, -nemo-2.2.0.ebuild, -nemo-2.2.1.ebuild:
+  Removed old ebuilds
+
 *nemo-2.2.1-r1 (18 May 2014)
 
   18 May 2014; Daniel Schömer <daniel.schoemer@gmx.net> +nemo-2.2.1-r1.ebuild:

@@ -1,32 +1,31 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/nemo/nemo-2.2.1.ebuild,v 1.3 2014/06/24 12:16:12 tetromino Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
 GNOME2_LA_PUNT="yes"
+PYTHON_COMPAT=( python{2_6,2_7} )
 
-inherit autotools eutils gnome2 virtualx git-r3
+inherit autotools eutils gnome2 python-any-r1 virtualx
 
 DESCRIPTION="A file manager for Cinnamon, forked from Nautilus"
 HOMEPAGE="http://cinnamon.linuxmint.com/"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/linuxmint/nemo.git"
-EGIT_COMMIT="${PV}"
+SRC_URI="https://github.com/linuxmint/nemo/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ LGPL-2+ FDL-1.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="exif +introspection tracker xmp" # doc
+IUSE="exif +introspection +l10n packagekit tracker xmp"
 
 COMMON_DEPEND="
-	>=dev-libs/glib-2.31.9:2
+	>=dev-libs/glib-2.34:2
+	>=gnome-extra/cinnamon-desktop-1.0:0=
 	>=x11-libs/pango-1.28.3
 	>=x11-libs/gtk+-3.3.17:3[introspection?]
 	>=dev-libs/libxml2-2.7.8:2
-	>=gnome-extra/cinnamon-desktop-1.0.0
 
-	gnome-base/dconf:=
+	gnome-base/dconf:0=
 	gnome-base/gsettings-desktop-schemas
 	>=x11-libs/libnotify-0.7:=
 	x11-libs/libX11
@@ -39,10 +38,15 @@ COMMON_DEPEND="
 	xmp? ( >=media-libs/exempi-2.1.0:= )
 "
 RDEPEND="${COMMON_DEPEND}
-	gnome-base/gnome-panel
 	x11-themes/gnome-icon-theme-symbolic
+	l10n? ( >=gnome-extra/cinnamon-translations-2.2 )
 "
 DEPEND="${COMMON_DEPEND}
+	${PYTHON_DEPS}
+	$(python_gen_any_dep '
+		dev-python/polib[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+	')
 	>=dev-lang/perl-5
 	>=dev-util/gdbus-codegen-2.31.0
 	dev-util/gtk-doc-am
@@ -51,7 +55,6 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	x11-proto/xproto
 
-	dev-python/polib
 	dev-util/gtk-doc
 	gnome-base/gnome-common
 "
@@ -60,17 +63,15 @@ DEPEND="${COMMON_DEPEND}
 PDEPEND=">=gnome-base/gvfs-0.1.2"
 
 src_prepare() {
-	# upstream fixes, drop on next release
-	epatch "${FILESDIR}"/0001-Use-gksu-instead-of-pkexec-until-systemd-glib-whatev.patch
-
+	epatch_user
 	eautoreconf # no configure in tarball
 	gnome2_src_prepare
 }
 
 src_configure() {
-	# FIXME: add $(use_enable doc gtk-doc) once gnome.eclass supports it in EAPI5
 	gnome2_src_configure \
 		--disable-update-mimedb \
+		--disable-more-warnings \
 		$(use_enable exif libexif) \
 		$(use_enable introspection) \
 		$(use_enable tracker) \
@@ -91,4 +92,3 @@ src_test() {
 	Xemake check
 	unset GSETTINGS_BACKEND
 }
-
