@@ -4,75 +4,78 @@
 
 EAPI=5
 
+ETYPE="sources"
+K_WANT_GENPATCHES="base extras experimental"
+K_GENPATCHES_VER="8"
+K_DEBLOB_AVAILABLE="1"
+inherit kernel-2
+detect_version
+detect_arch
+
 DESCRIPTION="Compiles sys-kernel/gentoo-sources-${PVR} using genkernel with config from /etc/kernels"
 HOMEPAGE="http://forums.gentoo.org/viewtopic-t-850109.html"
-SRC_URI=""
-
-inherit check-reqs
-
+SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
 LICENSE=""
-SLOT="${PF}"
+SLOT="${KV}"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="experimental"
 
-if [ "${PR}" == "r0" ] ; then
-	MY_KERNEL_V="${PV}-gentoo"
-else
-	MY_KERNEL_V="${PV}-gentoo-${PR}"
-fi
-
-DEPEND="
-	=sys-kernel/gentoo-sources-${PVR}
-	sys-kernel/genkernel-next
-"
+DEPEND="sys-kernel/genkernel-next"
 RDEPEND="${DEPEND}"
 
-CHECKREQS_DISK_BUILD="1G"
-
-pkg_setup() {
-	check-reqs_pkg_setup
-}
-
-src_unpack() {
-	local KERNEL_SOURCES="/usr/src/linux-${MY_KERNEL_V}"
-	local KERNEL_CONFIG="/etc/kernels/kernel-config-x86_64-${MY_KERNEL_V}"
-
-	cp -a "${KERNEL_SOURCES}" "${WORKDIR}/${P}" || die "Copying kernel sources from ${KERNEL_SOURCES} failed"
-	cp "${KERNEL_CONFIG}" "${T}/config" || die "Copying kernel config from ${KERNEL_CONFIG} failed"
-}
-
 src_compile() {
-	mkdir -p "${WORKDIR}/cache"
-	mkdir -p "${WORKDIR}/compiled/boot"
-	mkdir -p "${WORKDIR}/compiled/lib"
+	CONFIG_ARCH="$(tc-arch-kernel)"
+	[ "$(tc-arch)" = "amd64" ] && CONFIG_ARCH="x86_64"
+	KERNEL_CONFIG="/etc/kernels/kernel-config-${CONFIG_ARCH}-${KV}"
+	CACHE_DIR="${WORKDIR}/cache"
+	MODULES_PREFIX="${WORKDIR}/compiled"
+	BOOT_DIR="${WORKDIR}/compiled/boot"
+	FIRMWARE_DIR="${WORKDIR}/compiled/lib/firmware-${KV}"
+	KERNEL_SRC_DIR="${WORKDIR}/compiled/usr/src/linux-${KV}"
+
+	mkdir -p \
+		"${BOOT_DIR}" \
+		"${CACHE_DIR}" \
+		"${FIRMWARE_DIR}" \
+		"${KERNEL_SRC_DIR}" \
+		"${MODULES_PREFIX}"
+
+	(
+		cd "${S}"
+		ARCH="$(tc-arch-kernel)"
+		O="${KERNEL_SRC_DIR}"
+		cp "${KERNEL_CONFIG}" "${O}/.config"
+		make ${MAKEOPTS} O="${O}" modules_prepare || die "make modules_prepare failed"
+	)
 
 	GK_SHARE="/usr/share/genkernel" \
+	MAKEOPTS="${MAKEOPTS}" \
 	genkernel \
-		--kerneldir="${S}" \
-		--kernel-config="${T}/config" \
-		--bootdir="${WORKDIR}/compiled/boot" \
-		--module-prefix="${WORKDIR}/compiled" \
+		--bootdir="${BOOT_DIR}" \
+		--cachedir="${CACHE_DIR}" \
 		--clean \
-		--mrproper \
+		--firmware-dir="${FIRMWARE_DIR}" \
 		--install \
+		--kernel-config="${KERNEL_CONFIG}" \
+		--kerneldir="${S}" \
+		--logfile="${WORKDIR}/genkernel.log" \
+		--module-prefix="${MODULE_PREFIX}" \
+		--mrproper \
 		--no-gconfig \
 		--no-menuconfig \
 		--no-nconfig \
 		--no-save-config \
 		--no-xconfig \
-		--cachedir="${WORKDIR}/cache" \
-		--logfile="${WORKDIR}/genkernel.log" \
 		--tempdir="${T}" \
 		kernel || die "genkernel failed"
 
-	# rename firmware dir so it doesn't clash with other installs
-	mv "${WORKDIR}/compiled/lib/firmware" "${WORKDIR}/compiled/lib/firmware-${MY_KERNEL_V}" || die "Renaming firmware dir failed"
- }
+	find "${WORKDIR}/compiled" -mindepth 1 -maxdepth 3 -type d -print0 | xargs -0r rmdir >/dev/null 2>&1
+}
 
- src_install() {
+src_install() {
 	cp -a "${WORKDIR}/compiled"/* "${D}"/. || die "Copying kernel, firmware and modules failed"
 
-	elog "Firmware is stored in ${D}/lib/firmware-${MY_KERNEL_V}"
+	elog "Firmware is stored in /lib/firmware-${KV}"
 	elog "You may need to make a symlink from ${D}/lib/firmware to use it"
-	elog "ln -s ${D}/lib/firmware-${MY_KERNEL_V} ${D}/lib/firmware"
- }
+	elog "ln -s /lib/firmware-${KV} /lib/firmware"
+}
