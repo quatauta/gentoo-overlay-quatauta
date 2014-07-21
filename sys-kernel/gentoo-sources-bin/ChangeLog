@@ -4,6 +4,10 @@
 
   21 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
   gentoo-sources-bin-3.15.6.ebuild:
+  Let slot be set by kernel-2 eclass
+
+  21 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  gentoo-sources-bin-3.15.6.ebuild:
   Wrong module install directory in genkernel invocation.
 
   20 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
