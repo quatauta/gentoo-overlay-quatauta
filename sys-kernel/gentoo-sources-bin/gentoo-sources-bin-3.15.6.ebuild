@@ -24,26 +24,28 @@ DEPEND="sys-kernel/genkernel-next"
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	CONFIG_ARCH="$(tc-arch-kernel)"
+	local CONFIG_ARCH="$(tc-arch-kernel)"
 	[ "$(tc-arch)" = "amd64" ] && CONFIG_ARCH="x86_64"
-	KERNEL_CONFIG="/etc/kernels/kernel-config-${CONFIG_ARCH}-${KV}"
-	CACHE_DIR="${WORKDIR}/cache"
-	MODULES_PREFIX="${WORKDIR}/compiled"
-	BOOT_DIR="${WORKDIR}/compiled/boot"
-	FIRMWARE_DIR="${WORKDIR}/compiled/lib/firmware-${KV}"
-	KERNEL_SRC_DIR="${WORKDIR}/compiled/usr/src/linux-${KV}"
+	local KERNEL_CONFIG="/etc/kernels/kernel-config-${CONFIG_ARCH}-${KV}"
+	local CACHE_DIR="${WORKDIR}/cache"
+	local MODULE_PREFIX="${WORKDIR}/compiled"
+	local BOOT_DIR="${WORKDIR}/compiled/boot"
+	local FIRMWARE_DIR="${WORKDIR}/compiled/lib/firmware-${KV}"
+	local KERNEL_SRC_DIR="${WORKDIR}/compiled/usr/src/linux-${KV}"
 
 	mkdir -p \
 		"${BOOT_DIR}" \
 		"${CACHE_DIR}" \
 		"${FIRMWARE_DIR}" \
 		"${KERNEL_SRC_DIR}" \
-		"${MODULES_PREFIX}"
+		"${MODULE_PREFIX}"
 
 	(
 		cd "${S}"
 		ARCH="$(tc-arch-kernel)"
 		O="${KERNEL_SRC_DIR}"
+		make ${MAKEOPTS} mrproper
+		make ${MAKEOPTS} O="${O}" mrproper
 		cp "${KERNEL_CONFIG}" "${O}/.config"
 		make ${MAKEOPTS} O="${O}" modules_prepare || die "make modules_prepare failed"
 	)
@@ -69,7 +71,7 @@ src_compile() {
 		--tempdir="${T}" \
 		kernel || die "genkernel failed"
 
-	find "${WORKDIR}/compiled" -mindepth 1 -maxdepth 3 -type d -print0 | xargs -0r rmdir >/dev/null 2>&1
+	find "${WORKDIR}/compiled" -depth -mindepth 1 \( -type d -empty \) -print0 | xargs -0r rmdir -p ; true
 }
 
 src_install() {
