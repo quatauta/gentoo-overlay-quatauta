@@ -40,13 +40,12 @@ src_compile() {
 		"${MODULE_PREFIX}"
 
 	(
-		cd "${S}"
 		ARCH="$(tc-arch-kernel)"
-		O="${KERNEL_SRC_DIR}"
+		cd "${S}"
 		make ${MAKEOPTS} mrproper
 		make ${MAKEOPTS} O="${O}" mrproper
-		cp "${KERNEL_CONFIG}" "${O}/.config"
-		make ${MAKEOPTS} O="${O}" modules_prepare || die "make modules_prepare failed"
+		cp "${KERNEL_CONFIG}" "${KERNEL_SRC_DIR}/.config"
+		make ${MAKEOPTS} O="${KERNEL_SRC_DIR}" modules_prepare || die "make modules_prepare failed"
 	)
 
 	GK_SHARE="/usr/share/genkernel" \
@@ -74,6 +73,9 @@ src_compile() {
 }
 
 src_install() {
+	# Avoid file collision with sys-kernel/gentoo-sources
+	rm -f "${WORLDIR}/compiled/usr/src/linux-${KV}/Makefile"
+
 	cp -a "${WORKDIR}/compiled"/* "${D}"/. || die "Copying kernel, firmware and modules failed"
 
 	elog "Firmware is stored in /lib/firmware-${KV}"
