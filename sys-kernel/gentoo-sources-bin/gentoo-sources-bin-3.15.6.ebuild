@@ -16,7 +16,6 @@ DESCRIPTION="Compiles sys-kernel/gentoo-sources-${PVR} using genkernel with conf
 HOMEPAGE="http://forums.gentoo.org/viewtopic-t-850109.html"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
 LICENSE=""
-SLOT="${KV}"
 KEYWORDS="~amd64"
 IUSE="experimental"
 
