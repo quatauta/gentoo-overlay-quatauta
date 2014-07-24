@@ -12,7 +12,7 @@ SRC_URI="http://ftp.otrs.org/pub/${PN}/${P}.tar.bz2"
 
 LICENSE="AGPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE="apache2 fastcgi +gd ldap mod_perl +mysql pdf postgres soap"
+IUSE="apache2 cjk fastcgi +gd imap ldap mod_perl +mysql pdf postgres soap"
 SLOT="0"
 #WEBAPP_MANUAL_SLOT="yes"
 
@@ -23,6 +23,7 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	dev-perl/Authen-SASL
 	dev-perl/Crypt-PasswdMD5
+	dev-perl/Crypt-Eksblowfish
 	dev-perl/CSS-Minifier
 	dev-perl/Date-Pcalc
 	mysql? ( dev-perl/DBD-mysql )
@@ -56,6 +57,7 @@ RDEPEND="${DEPEND}
 	dev-perl/Text-CSV_XS
 	dev-perl/TimeDate
 	dev-perl/XML-Parser
+	dev-perl/YAML-LibYAML
 
 	virtual/perl-MIME-Base64
 	>=virtual/perl-CGI-3.33
@@ -65,18 +67,24 @@ RDEPEND="${DEPEND}
 
 	virtual/mta
 
-	apache2? ( mod_perl? ( www-servers/apache:2
-					=www-apache/libapreq2-2* www-apache/mod_perl )
-		fastcgi? ( || ( www-apache/mod_fcgid www-apache/mod_fastcgi )
-				www-servers/apache:2[suexec] )
-		!fastcgi? (
-			!mod_perl? ( www-servers/apache:2[suexec] ) )
-			)
-	fastcgi? ( dev-perl/FCGI virtual/httpd-fastcgi )
-	!fastcgi? (
-		!apache2? ( virtual/httpd-cgi ) )"
+	cjk? ( dev-perl/Encode-HanExtra )
+	imap? ( dev-perl/Mail-IMAPClient )
 
-#   dev-perl/libwww-perl
+	apache2? (
+		mod_perl? (
+			www-servers/apache:2
+			=www-apache/libapreq2-2*
+			www-apache/mod_perl
+		)
+		fastcgi? (
+			|| ( www-apache/mod_fcgid www-apache/mod_fastcgi )
+		    www-servers/apache:2[suexec]
+		)
+		!fastcgi? ( !mod_perl? ( www-servers/apache:2[suexec] ) )
+
+	)
+	fastcgi? ( dev-perl/FCGI virtual/httpd-fastcgi )
+	!fastcgi? ( !apache2? ( virtual/httpd-cgi ) )"
 
 OTRS_HOME="/var/lib/otrs"
 
