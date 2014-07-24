@@ -117,6 +117,7 @@ src_prepare() {
 		--web-user=apache \
 		--otrs-group=apache \
 		--web-group=apache "${S}" \
+		--not-root \
 		|| die "Could not set permissions"
 
 	echo "CONFIG_PROTECT=\"${OTRS_HOME}/Kernel/Config.pm \
@@ -125,8 +126,7 @@ src_prepare() {
 }
 
 src_install() {
-	dodoc CHANGES.md README* \
-	 	doc/X-OTRS-Headers.txt || die
+	dodoc *.md README* COPY* RELEASE* || die
 
 	dodoc doc/manual/en/otrs_admin_book.pdf
 
