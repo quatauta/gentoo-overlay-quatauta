@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*owncloud-7.0.0 (24 Jul 2014)
+
+  24 Jul 2014; root <root@intranet.mpi-ierpl.lu> -owncloud-7.0.0_beta1.ebuild,
+  -owncloud-7.0.0_rc1.ebuild, +owncloud-7.0.0.ebuild:
+  Upstream version bump to 7.0.0
+
 *owncloud-7.0.0_rc1 (12 Jul 2014)
 *owncloud-7.0.0_beta1 (12 Jul 2014)
 
