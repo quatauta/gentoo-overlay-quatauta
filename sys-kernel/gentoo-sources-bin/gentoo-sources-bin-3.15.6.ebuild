@@ -74,7 +74,7 @@ src_compile() {
 
 src_install() {
 	# Avoid file collision with sys-kernel/gentoo-sources
-	rm -f "${WORLDIR}/compiled/usr/src/linux-${KV}/Makefile"
+	rm -f "${WORLDIR}/compiled/usr/src/*/Makefile"
 
 	cp -a "${WORKDIR}/compiled"/* "${D}"/. || die "Copying kernel, firmware and modules failed"
 
