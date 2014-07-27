@@ -26,7 +26,7 @@ DESCRIPTION="Compiles sys-kernel/hardened-sources-${PVR} using genkernel with co
 HOMEPAGE="http://forums.gentoo.org/viewtopic-t-850109.html http://www.gentoo.org/proj/en/hardened/"
 LICENSE=""
 KEYWORDS="~amd64"
-IUSE="experimental"
+IUSE=""
 
 DEPEND="sys-kernel/genkernel-next"
 RDEPEND="${DEPEND}"
