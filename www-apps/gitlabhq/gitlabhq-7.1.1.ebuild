@@ -69,7 +69,6 @@ ruby_add_bdepend "
 #	"${P}-ldap-custom-mapping.patch"
 RUBY_PATCHES=(
 	"${P}-fix-gemfile.patch"
-	"${P}-fix-project-name-regex.patch"
 	"${PN}-6.0.2-fix-sendmail-config.patch"
 	"${P}-email-custom-reply_to.patch"
 )
@@ -131,13 +130,8 @@ all_ruby_prepare() {
 		rm ${dbconf}.postgresql
 	fi
 
-	# remove zzet's stupid migration which expetcs that users are so foolish
-	# to run GitLab with PostgreSQL's superuser...
-	rm db/migrate/20121009205010_postgres_create_integer_cast.rb
-
 	# remove useless files
 	rm -r lib/support/{deploy,init.d}
-	rm -r script/{background_jobs,web}
 	use unicorn || rm config/unicorn.rb
 }
 
