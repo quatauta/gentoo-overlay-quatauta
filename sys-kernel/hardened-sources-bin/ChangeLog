@@ -1,0 +1,23 @@
+# ChangeLog for sys-kernel/hardened-sources-bin
+# Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  27 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  hardened-sources-bin-3.15.6.ebuild:
+  sys-kernel/gentoo-sources-bin, sys-kernel/hardened-sources-bin: Do not
+  install Makefile in /usr/src/linux*/
+
+  27 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  hardened-sources-bin-3.15.6.ebuild:
+  Removed experimental use flag
+
+  27 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  hardened-sources-bin-3.15.6.ebuild:
+  Removed experimental patches. They conflict with grescurity
+
+*hardened-sources-bin-3.15.6 (27 Jul 2014)
+
+  27 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  +hardened-sources-bin-3.15.6.ebuild:
+  Added binary package for hardened-sources
+
