@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/nginx-1.7.2.ebuild,v 1.1 2014/06/19 09:52:25 dev-zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/nginx/nginx-1.7.3.ebuild,v 1.2 2014/07/23 05:30:42 dev-zero Exp $
 
 EAPI="5"
 
@@ -54,7 +54,7 @@ HTTP_FANCYINDEX_MODULE_URI="https://github.com/aperezdc/ngx-fancyindex/archive/$
 HTTP_FANCYINDEX_MODULE_WD="${WORKDIR}/ngx-fancyindex-${HTTP_FANCYINDEX_MODULE_PV}"
 
 # http_lua (https://github.com/chaoslawful/lua-nginx-module, BSD license)
-HTTP_LUA_MODULE_PV="0.9.8"
+HTTP_LUA_MODULE_PV="0.9.10"
 HTTP_LUA_MODULE_P="ngx_http_lua-${HTTP_LUA_MODULE_PV}"
 HTTP_LUA_MODULE_URI="https://github.com/chaoslawful/lua-nginx-module/archive/v${HTTP_LUA_MODULE_PV}.tar.gz"
 HTTP_LUA_MODULE_WD="${WORKDIR}/lua-nginx-module-${HTTP_LUA_MODULE_PV}"
@@ -71,7 +71,7 @@ HTTP_UPSTREAM_CHECK_MODULE_P="ngx_http_upstream_check-${HTTP_UPSTREAM_CHECK_MODU
 HTTP_UPSTREAM_CHECK_MODULE_URI="https://github.com/yaoweibin/nginx_upstream_check_module/archive/v${HTTP_UPSTREAM_CHECK_MODULE_PV}.tar.gz"
 HTTP_UPSTREAM_CHECK_MODULE_WD="${WORKDIR}/nginx_upstream_check_module-${HTTP_UPSTREAM_CHECK_MODULE_PV}"
 
-# http_metrics (https://github.com/madvertise/ngx_metrics, BSD license)
+# http_metrics (https://github.com/zenops/ngx_metrics, BSD license)
 HTTP_METRICS_MODULE_PV="0.1.1"
 HTTP_METRICS_MODULE_P="ngx_metrics-${HTTP_METRICS_MODULE_PV}"
 HTTP_METRICS_MODULE_URI="https://github.com/madvertise/ngx_metrics/archive/v${HTTP_METRICS_MODULE_PV}.tar.gz"
@@ -96,7 +96,7 @@ HTTP_DAV_EXT_MODULE_URI="http://github.com/arut/nginx-dav-ext-module/archive/v${
 HTTP_DAV_EXT_MODULE_WD="${WORKDIR}/nginx-dav-ext-module-${HTTP_DAV_EXT_MODULE_PV}"
 
 # echo-nginx-module (https://github.com/agentzh/echo-nginx-module, BSD license)
-HTTP_ECHO_MODULE_PV="0.53"
+HTTP_ECHO_MODULE_PV="0.54"
 HTTP_ECHO_MODULE_P="ngx_http_echo-${HTTP_ECHO_MODULE_PV}"
 HTTP_ECHO_MODULE_URI="https://github.com/agentzh/echo-nginx-module/archive/v${HTTP_ECHO_MODULE_PV}.tar.gz"
 HTTP_ECHO_MODULE_WD="${WORKDIR}/echo-nginx-module-${HTTP_ECHO_MODULE_PV}"
@@ -115,10 +115,10 @@ HTTP_PUSH_STREAM_MODULE_URI="https://github.com/wandenberg/nginx-push-stream-mod
 HTTP_PUSH_STREAM_MODULE_WD="${WORKDIR}/nginx-push-stream-module-${HTTP_PUSH_STREAM_MODULE_PV}"
 
 # sticky-module (https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng, BSD-2)
-HTTP_STICKY_MODULE_PV="1.2.4"
+HTTP_STICKY_MODULE_PV="1.2.5"
 HTTP_STICKY_MODULE_P="nginx_http_sticky_module_ng-${HTTP_STICKY_MODULE_PV}"
-HTTP_STICKY_MODULE_URI="mirror://bitbucket/nginx-goodies/nginx-sticky-module-ng/get/${HTTP_STICKY_MODULE_PV}.tar.bz2"
-HTTP_STICKY_MODULE_WD="${WORKDIR}/nginx-goodies-nginx-sticky-module-ng-c825ea7c5c91"
+HTTP_STICKY_MODULE_URI="https://bitbucket.org/nginx-goodies/nginx-sticky-module-ng/get/${HTTP_STICKY_MODULE_PV}.tar.bz2"
+HTTP_STICKY_MODULE_WD="${WORKDIR}/nginx-goodies-nginx-sticky-module-ng-bd312d586752"
 
 # ajp-module (https://github.com/yaoweibin/nginx_ajp_module, BSD-2)
 HTTP_AJP_MODULE_PV="0.3.0"
@@ -132,7 +132,13 @@ HTTP_SPNEGO_AUTH_MODULE_P="ngx_http_spnego_auth-${HTTP_SPNEGO_AUTH_MODULE_PV}"
 HTTP_SPNEGO_AUTH_MODULE_URI="https://github.com/stnoonan/spnego-http-auth-nginx-module/archive/${HTTP_SPNEGO_AUTH_MODULE_PV}.tar.gz"
 HTTP_SPNEGO_AUTH_MODULE_WD="${WORKDIR}/spnego-http-auth-nginx-module-${HTTP_SPNEGO_AUTH_MODULE_PV}"
 
-inherit eutils ssl-cert toolchain-funcs perl-module flag-o-matic pax-utils user systemd versionator
+# mogilefs-module (http://www.grid.net.ru/nginx/mogilefs.en.html, BSD-2)
+HTTP_MOGILEFS_MODULE_PV="1.0.4"
+HTTP_MOGILEFS_MODULE_P="ngx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
+HTTP_MOGILEFS_MODULE_URI="http://www.grid.net.ru/nginx/download/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}.tar.gz"
+HTTP_MOGILEFS_MODULE_WD="${WORKDIR}/nginx_mogilefs_module-${HTTP_MOGILEFS_MODULE_PV}"
+
+inherit eutils ssl-cert toolchain-funcs perl-module flag-o-matic pax-utils user systemd versionator multilib
 
 DESCRIPTION="Robust, small and high performance http and reverse proxy server"
 HOMEPAGE="http://nginx.org"
@@ -155,6 +161,7 @@ SRC_URI="http://nginx.org/download/${P}.tar.gz
 	nginx_modules_http_push_stream? ( ${HTTP_PUSH_STREAM_MODULE_URI} -> ${HTTP_PUSH_STREAM_MODULE_P}.tar.gz )
 	nginx_modules_http_sticky? ( ${HTTP_STICKY_MODULE_URI} -> ${HTTP_STICKY_MODULE_P}.tar.bz2 )
 	nginx_modules_http_ajp? ( ${HTTP_AJP_MODULE_URI} -> ${HTTP_AJP_MODULE_P}.tar.gz )
+	nginx_modules_http_mogilefs? ( ${HTTP_MOGILEFS_MODULE_URI} -> ${HTTP_MOGILEFS_MODULE_P}.tar.gz )
 	nginx_modules_http_spnego_auth? ( ${HTTP_SPNEGO_AUTH_MODULE_URI} -> ${HTTP_SPNEGO_AUTH_MODULE_P}.tar.gz )"
 
 LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
@@ -162,7 +169,7 @@ LICENSE="BSD-2 BSD SSLeay MIT GPL-2 GPL-2+
 	nginx_modules_http_push_stream? ( GPL-3 )"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
 
 NGINX_MODULES_STD="access auth_basic autoindex browser charset empty_gif fastcgi
 geo gzip limit_req limit_conn map memcached proxy referer rewrite scgi ssi
@@ -187,10 +194,11 @@ NGINX_MODULES_3RD="
 	http_push_stream
 	http_sticky
 	http_ajp
+	http_mogilefs
 	http_spnego_auth"
 
-IUSE="aio debug +http +http-cache ipv6 kerberos libatomic +pcre pcre-jit rtmp selinux ssl
-userland_GNU vim-syntax"
+IUSE="aio debug +http +http-cache ipv6 kerberos libatomic luajit +pcre pcre-jit rtmp
+selinux ssl userland_GNU vim-syntax"
 
 for mod in $NGINX_MODULES_STD; do
 	IUSE="${IUSE} +nginx_modules_http_${mod}"
@@ -224,7 +232,7 @@ CDEPEND="
 	nginx_modules_http_secure_link? ( userland_GNU? ( dev-libs/openssl ) )
 	nginx_modules_http_spdy? ( >=dev-libs/openssl-1.0.1c )
 	nginx_modules_http_xslt? ( dev-libs/libxml2 dev-libs/libxslt )
-	nginx_modules_http_lua? ( || ( dev-lang/lua dev-lang/luajit ) )
+	nginx_modules_http_lua? ( !luajit? ( dev-lang/lua ) luajit? ( dev-lang/luajit ) )
 	nginx_modules_http_auth_pam? ( virtual/pam )
 	nginx_modules_http_metrics? ( dev-libs/yajl )
 	nginx_modules_http_dav_ext? ( dev-libs/expat )
@@ -305,6 +313,11 @@ src_configure() {
 	# mod_security needs to generate nginx/modsecurity/config before including it
 	if use nginx_modules_http_security; then
 		cd "${HTTP_SECURITY_MODULE_WD}"
+		if use luajit ; then
+			sed -i \
+				-e 's|^\(LUA_PKGNAMES\)=.*|\1="luajit"|' \
+				configure || die
+		fi
 		./configure \
 			--enable-standalone-module \
 			$(use_enable pcre-jit) \
@@ -370,6 +383,13 @@ src_configure() {
 
 	if use nginx_modules_http_lua; then
 		http_enabled=1
+		if use luajit; then
+			export LUAJIT_LIB=$(pkg-config --variable libdir luajit)
+			export LUAJIT_INC=$(pkg-config --variable includedir luajit)
+		else
+			export LUA_LIB=$(pkg-config --variable libdir lua)
+			export LUA_INC=$(pkg-config --variable includedir lua)
+		fi
 		myconf+=" --add-module=${DEVEL_KIT_MODULE_WD}"
 		myconf+=" --add-module=${HTTP_LUA_MODULE_WD}"
 	fi
@@ -427,6 +447,11 @@ src_configure() {
 	if use nginx_modules_http_ajp ; then
 		http_enabled=1
 		myconf+=" --add-module=${HTTP_AJP_MODULE_WD}"
+	fi
+
+	if use nginx_modules_http_mogilefs ; then
+		http_enabled=1
+		myconf+=" --add-module=${HTTP_MOGILEFS_MODULE_WD}"
 	fi
 
 	if use nginx_modules_http_spnego_auth ; then
@@ -487,6 +512,11 @@ src_configure() {
 		--http-scgi-temp-path="${EPREFIX}/${NGINX_HOME_TMP}"/scgi \
 		--http-uwsgi-temp-path="${EPREFIX}/${NGINX_HOME_TMP}"/uwsgi \
 		${myconf} || die "configure failed"
+
+	# A purely cosmetic change that makes nginx -V more readable. This can be
+	# good if people outside the gentoo community would troubleshoot and
+	# question the users setup.
+	sed -i -e "s|${WORKDIR}|external_module|g" objs/ngx_auto_config.h || die
 
 	if use nginx_modules_http_security; then
 		cd "${HTTP_SECURITY_MODULE_WD}"
