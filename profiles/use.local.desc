@@ -8,7 +8,6 @@ gnome-extra/nemo:tracker - Add support for app-misc/tracker search
 www-apps/gitlabhq:mysql - Adds support for the MySQL database.
 www-apps/gitlabhq:postgres - Adds support for the PostgreSQL database.
 www-apps/gitlabhq:unicorn - Build with bundled Unicorn server.
-www-apps/otrs:mod_perl - Provide all dependencies for use of mod_perl instead of cgi
 www-servers/nginx:aio - Enables file AIO support
 www-servers/nginx:http - Enable HTTP core support
 www-servers/nginx:http-cache - Enable HTTP cache support

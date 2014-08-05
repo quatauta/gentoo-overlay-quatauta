@@ -2,6 +2,17 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*gitlabhq-7.1.1 (31 Jul 2014)
+
+  31 Jul 2014; root <root@intranet.mpi-ierpl.lu>
+  -files/gitlabhq-7.0.0-email-custom-reply_to.patch,
+  -files/gitlabhq-7.0.0-fix-gemfile.patch,
+  -files/gitlabhq-7.0.0-fix-project-name-regex.patch,
+  +files/gitlabhq-7.1.1-email-custom-reply_to.patch,
+  +files/gitlabhq-7.1.1-fix-gemfile.patch, -gitlabhq-7.0.0.ebuild,
+  +gitlabhq-7.1.1.ebuild:
+  Version bump to 7.1.1
+
   09 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net> gitlabhq-7.0.0.ebuild:
   www-apps/gitlab: changed slot from 6 to 7
 
