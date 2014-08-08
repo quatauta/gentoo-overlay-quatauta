@@ -9,9 +9,9 @@ IUSE="nls xinerama bidi +truetype +imlib +slit +toolbar vim-syntax"
 
 DESCRIPTION="Fluxbox is an X11 window manager featuring tabs and an iconbar"
 
-EGIT_REPO_URI="git://git.fluxbox.org/fluxbox.git"
+EGIT_REPO_URI="https://github.com/fluxbox/fluxbox.git"
 SRC_URI=""
-HOMEPAGE="http://www.fluxbox.org"
+HOMEPAGE="http://www.fluxbox.org https://github.com/fluxbox/fluxbox"
 
 RDEPEND="x11-libs/libXpm
 	x11-libs/libXrandr
