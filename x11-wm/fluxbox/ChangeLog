@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*fluxbox-9999-r2 (08 Aug 2014)
+
+  08 Aug 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  -fluxbox-9999-r1.ebuild, +fluxbox-9999-r2.ebuild:
+  Changed vcs-ebuild to use Github repository.
+
   24 Apr 2014; root <Daniel Schoemer daniel.schoemer@gmx.net>
   fluxbox-9999-r1.ebuild:
   util/fluxbox-generate_menu is no longer executable in the git repo, call it
