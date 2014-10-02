@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*emacs-vcs-25.0.9999 (02 Oct 2014)
+
+  02 Oct 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  -emacs-vcs-24.4.9999.ebuild, +emacs-vcs-25.0.9999.ebuild:
+  Emacs 25
+
   06 Jul 2014; Daniel Schömer <daniel.schoemer@gmx.net>
   -emacs-vcs-24.3.9999-r50.ebuild, emacs-vcs-24.4.9999.ebuild:
   24.4.9999: Updated ebuild from main portage tree
