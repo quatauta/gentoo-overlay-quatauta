@@ -9,6 +9,7 @@ inherit git-2
 DESCRIPTION="Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2"
 HOMEPAGE="https://github.com/jpfleury/clearlooks-phenix"
 EGIT_REPO_URI="https://github.com/jpfleury/${PN}.git"
+EGIT_BRANCH="v5" # for GTK+ 3.12
 
 KEYWORDS=""
 LICENSE="GPL-3"
