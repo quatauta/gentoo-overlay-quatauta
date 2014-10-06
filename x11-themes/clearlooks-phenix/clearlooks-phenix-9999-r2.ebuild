@@ -7,8 +7,8 @@ EAPI=5
 inherit git-2
 
 DESCRIPTION="Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2"
-HOMEPAGE="http://www.jpfleury.net/en/software/clearlooks-phenix.php https://gitorious.org/projets-divers/clearlooks-phenix"
-EGIT_REPO_URI="git://gitorious.org/projets-divers/${PN}.git"
+HOMEPAGE="https://github.com/jpfleury/clearlooks-phenix"
+EGIT_REPO_URI="https://github.com/jpfleury/${PN}.git"
 
 KEYWORDS=""
 LICENSE="GPL-3"
