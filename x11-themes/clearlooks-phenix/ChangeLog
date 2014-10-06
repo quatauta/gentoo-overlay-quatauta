@@ -2,6 +2,10 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Oct 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  clearlooks-phenix-9999-r2.ebuild:
+  Changed repo branch to v5 to support x11-libs/gtk+-3.12
+
 *clearlooks-phenix-9999-r2 (06 Oct 2014)
 
   06 Oct 2014; Daniel Schömer <daniel.schoemer@gmx.net>
