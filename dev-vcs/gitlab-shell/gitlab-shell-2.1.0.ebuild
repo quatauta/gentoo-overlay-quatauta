@@ -14,11 +14,12 @@ SRC_URI="https://github.com/gitlabhq/gitlab-shell/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND=""
 RDEPEND="
+	!<www-apps/gitlabhq-7.5
 	dev-vcs/git
 	dev-db/redis
 	virtual/ssh"
@@ -29,7 +30,6 @@ MERGE_TYPE="binary"
 
 RUBY_PATCHES=(
 	"${PN}-1.7.1-paths-from-config.patch"
-	"${PN}-1.8.0-redis-db-option.patch"
 )
 
 GIT_USER="git"

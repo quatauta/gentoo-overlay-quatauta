@@ -11,7 +11,7 @@ EAPI="5"
 #   difficult to maintain them via ebuilds.
 #
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 PYTHON_COMPAT=( python{2_7,3_{1,2,3}} )
 
 inherit eutils python-r1 ruby-ng systemd user
@@ -46,6 +46,7 @@ GEMS_DEPEND="
 	mysql? ( virtual/mysql )"
 DEPEND="${GEMS_DEPEND}
 	>=dev-vcs/gitlab-shell-1.8
+	<=dev-vcs/gitlab-shell-2.1
 	dev-vcs/git"
 RDEPEND="${DEPEND}
 	dev-db/redis
