@@ -106,6 +106,12 @@ src_prepare() {
 			|| die "Upstream version number changed to ${FULL_VERSION}"
 	fi
 
+	# Disable position-independent executable support
+	# Fixes temacs segmentation fault when build with hardened/pie-enabled gcc
+	# https://lists.gnu.org/archive/html/bug-gnu-emacs/2014-10/msg00896.html
+	einfo "Disabling pie support that causes temacs to segfault"
+	sed -i -e 's/gnu.*LD_SWITCH_SYSTEM_TEMACS="/\0-fno-pie /' configure.ac || die "Failed to add '-fno-pie' to \$LD_SWITCH_SYSTEM_TEMACS in configure.ac"
+
 	epatch_user
 
 	# Fix filename reference in redirected man page
