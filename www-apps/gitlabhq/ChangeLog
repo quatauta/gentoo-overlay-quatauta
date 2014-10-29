@@ -2,6 +2,16 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*gitlabhq-7.4.2 (29 Oct 2014)
+
+  29 Oct 2014; root <root@intranet.mpi-ierpl.lu>
+  -files/gitlabhq-7.3.2-email-custom-reply_to.patch,
+  -files/gitlabhq-7.3.2-fix-gemfile.patch,
+  +files/gitlabhq-7.4.2-email-custom-reply_to.patch,
+  +files/gitlabhq-7.4.2-fix-gemfile.patch, -gitlabhq-7.3.2.ebuild,
+  +gitlabhq-7.4.2.ebuild:
+  7.4.2 and dev-vcs/gitlab-shell-2.0.1
+
 *gitlabhq-7.3.2 (25 Oct 2014)
 
   25 Oct 2014; root <root@intranet.mpi-ierpl.lu>

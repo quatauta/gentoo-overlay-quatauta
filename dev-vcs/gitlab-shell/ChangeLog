@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*gitlab-shell-2.0.1 (29 Oct 2014)
+
+  29 Oct 2014; root <root@intranet.mpi-ierpl.lu> +gitlab-shell-2.0.1.ebuild,
+  -gitlab-shell-2.1.0.ebuild:
+  www-apps/gitlabhq-7.4.2 and dev-vcs/gitlab-shell-2.0.1
+
 *gitlab-shell-2.1.0 (25 Oct 2014)
 
   25 Oct 2014; root <root@intranet.mpi-ierpl.lu> -gitlab-shell-1.9.6.ebuild,
