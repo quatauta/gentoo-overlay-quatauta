@@ -4,7 +4,7 @@
 
 EAPI="5"
 
-USE_RUBY="ruby19 ruby20 ruby21"
+USE_RUBY="ruby20 ruby21"
 
 inherit eutils ruby-ng user
 
@@ -14,12 +14,12 @@ SRC_URI="https://github.com/gitlabhq/gitlab-shell/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=""
 RDEPEND="
-	!<www-apps/gitlabhq-7.5
+	www-apps/gitlabhq
 	dev-vcs/git
 	dev-db/redis
 	virtual/ssh"
