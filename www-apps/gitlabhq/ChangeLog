@@ -2,6 +2,13 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  06 Nov 2014; root <root@intranet.mpi-ierpl.lu>
+  -files/gitlabhq-7.4.2-email-custom-reply_to.patch,
+  -files/gitlabhq-7.4.2-fix-gemfile.patch,
+  +files/gitlabhq-7.4.3-email-custom-reply_to.patch,
+  +files/gitlabhq-7.4.3-fix-gemfile.patch:
+  Renamed patches for version 7.4.3
+
 *gitlabhq-7.4.3 (01 Nov 2014)
 
   01 Nov 2014; Daniel Schömer <daniel.schoemer@gmx.net>
