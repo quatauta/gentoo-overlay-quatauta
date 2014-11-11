@@ -2,6 +2,12 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+*pfstools-1.9.0 (11 Nov 2014)
+
+  11 Nov 2014; Daniel Schömer <daniel.schoemer@gmx.net>
+  +pfstools-1.9.0.ebuild:
+  1.9.0 added using cmake
+
 *pfstools-1.8.5 (13 Dec 2013)
 
   13 Dec 2013; Daniel Schoemer <daniel.schoemer@gmx.net>
