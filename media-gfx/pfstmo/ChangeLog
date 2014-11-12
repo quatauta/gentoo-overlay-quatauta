@@ -2,6 +2,13 @@
 # Copyright 1999-2014 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
 
+  12 Nov 2014; Daniel Schömer <daniel.schoemer@gmx.net> pfstmo-1.5.ebuild:
+  1.5: EAPI=5 and autotools-utils eclass
+
+  12 Nov 2014; Daniel Schömer <daniel.schoemer@gmx.net> pfstmo-1.5.ebuild:
+  1.5: Moved configuration from src_compile() into src_configure() and removed
+  explicit src_unpack().
+
 *pfstmo-1.5 (13 Dec 2013)
 
   13 Dec 2013; Daniel Schoemer <daniel.schoemer@gmx.net> -pfstmo-1.4.ebuild,
