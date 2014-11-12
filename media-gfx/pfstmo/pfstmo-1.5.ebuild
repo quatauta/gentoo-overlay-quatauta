@@ -23,16 +23,10 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-}
-
-src_compile() {
+src_configure() {
 	econf \
 		$(use_enable debug) \
-		|| die "configure failed"
-	emake || die "make failed"
+		|| die "econf configure failed"
 }
 
 src_install() {
