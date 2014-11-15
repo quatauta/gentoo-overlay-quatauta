@@ -2,9 +2,6 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
-gnome-extra/nemo:introspection - Use dev-libs/gobject-introspection for introspection
-gnome-extra/nemo:packagekit - Use packagekit to search for programs to open unknown file types
-gnome-extra/nemo:tracker - Add support for app-misc/tracker search
 www-apps/gitlabhq:mysql - Adds support for the MySQL database.
 www-apps/gitlabhq:postgres - Adds support for the PostgreSQL database.
 www-apps/gitlabhq:unicorn - Build with bundled Unicorn server.
