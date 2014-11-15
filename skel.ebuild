@@ -1,4 +1,4 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -11,29 +11,37 @@
 # will be committed to cvs, the details on that line will be automatically
 # generated to contain the correct data.
 
+# The EAPI variable tells the ebuild format in use.
+# Defaults to 0 if not specified.
+# It is suggested that you use the latest EAPI approved by the Council.
+# The PMS contains specifications for all EAPIs. Eclasses will test for this
+# variable if they need to use EAPI > 0 features.
+EAPI=5
+
 # inherit lists eclasses to inherit functions from. Almost all ebuilds should
 # inherit eutils, as a large amount of important functionality has been
-# moved there. For example, the $(get_libdir) mentioned below wont work
+# moved there. For example, the epatch call mentioned below wont work
 # without the following line:
 inherit eutils
 # A well-used example of an eclass function that needs eutils is epatch. If
 # your source needs patches applied, it's suggested to put your patch in the
 # 'files' directory and use:
 #
-#   epatch ${FILESDIR}/patch-name-here
+#   epatch "${FILESDIR}"/patch-name-here
 #
 # eclasses tend to list descriptions of how to use their functions properly.
-# take a look at /usr/portage/eclasses/ for more examples.
+# take a look at /usr/portage/eclass/ for more examples.
 
 # Short one-line description of this package.
 DESCRIPTION="This is a sample skeleton ebuild file"
 
 # Homepage, not used by Portage directly but handy for developer reference
-HOMEPAGE="http://foo.bar.com/"
+HOMEPAGE="http://foo.example.org/"
 
 # Point to any required sources; these will be automatically downloaded by
 # Portage.
-SRC_URI="ftp://foo.bar.com/${P}.tar.gz"
+SRC_URI="ftp://foo.example.org/${P}.tar.gz"
+
 
 # License of the package.  This must match the name of file(s) in
 # /usr/portage/licenses/.  For complex license combination see the developer
@@ -57,7 +65,7 @@ SLOT="0"
 # instead of relying on an external package.mask file.  Right now, you should
 # set the KEYWORDS variable for every ebuild so that it contains the names of
 # all the architectures with which the ebuild works.  All of the official
-# architectures can be found in the keywords.desc file which is in
+# architectures can be found in the arch.list file which is in
 # /usr/portage/profiles/.  Usually you should just set this to "~x86".  The ~
 # in front of the architecture indicates that the package is new and should be
 # considered unstable until testing proves its stability.  So, if you've
@@ -73,13 +81,13 @@ KEYWORDS="~x86"
 
 # Comprehensive list of any and all USE flags leveraged in the ebuild,
 # with the exception of any ARCH specific flags, i.e. "ppc", "sparc",
-# "x86" and "alpha".  This is a required variable.  If the ebuild doesn't
-# use any USE flags, set to "".
+# "x86" and "alpha".  Not needed if the ebuild doesn't use any USE flags.
 IUSE="gnome X"
 
 # A space delimited list of portage features to restrict. man 5 ebuild
 # for details.  Usually not needed.
 #RESTRICT="strip"
+
 
 # Build-time dependencies, such as
 #    ssl? ( >=dev-libs/openssl-0.9.6b )
@@ -88,7 +96,7 @@ IUSE="gnome X"
 # had installed on your system when you tested the package.  Then
 # other users hopefully won't be caught without the right version of
 # a dependency.
-DEPEND=""
+#DEPEND=""
 
 # Run-time dependencies. Must be defined to whatever this depends on to run.
 # The below is valid if the same run-time depends are required to compile.
@@ -98,12 +106,16 @@ RDEPEND="${DEPEND}"
 # unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
 # If you don't need to change it, leave the S= line out of the ebuild
 # to keep it tidy.
-#S="${WORKDIR}/${P}"
+#S=${WORKDIR}/${P}
 
-src_compile() {
+
+# The following src_configure function is implemented as default by portage, so
+# you only need to call it if you need a different behaviour.
+# This function is available only in EAPI 2 and later.
+#src_configure() {
 	# Most open-source packages use GNU autoconf for configuration.
-	# The quickest (and preferred) way of running configure is:
-	econf || die "econf failed"
+	# The default, quickest (and preferred) way of running configure is:
+	#econf
 	#
 	# You could use something similar to the following lines to
 	# configure your package before compilation.  The "|| die" portion
@@ -115,11 +127,18 @@ src_compile() {
 	#	--host=${CHOST} \
 	#	--prefix=/usr \
 	#	--infodir=/usr/share/info \
-	#	--mandir=/usr/share/man || die "./configure failed"
+	#	--mandir=/usr/share/man || die
 	# Note the use of --infodir and --mandir, above. This is to make
 	# this package FHS 2.2-compliant.  For more information, see
 	#   http://www.pathname.com/fhs/
+#}
 
+# The following src_compile function is implemented as default by portage, so
+# you only need to call it, if you need different behaviour.
+# For EAPI < 2 src_compile runs also commands currently present in
+# src_configure. Thus, if you're using an older EAPI, you need to copy them
+# to your src_compile and drop the src_configure function.
+#src_compile() {
 	# emake (previously known as pmake) is a script that calls the
 	# standard GNU make with parallel building options for speedier
 	# builds (especially on SMP systems).  Try emake first.  It might
@@ -127,15 +146,20 @@ src_compile() {
 	# related to parallelism, in these cases, use emake -j1 to limit
 	# make to a single process.  The -j1 is a visual clue to others
 	# that the makefiles have bugs that have been worked around.
-	emake || die "emake failed"
-}
 
-src_install() {
+	#emake
+#}
+
+# The following src_install function is implemented as default by portage, so
+# you only need to call it, if you need different behaviour.
+# For EAPI < 4 src_install is just returing true, so you need to always specify
+# this function in older EAPIs.
+#src_install() {
 	# You must *personally verify* that this trick doesn't install
 	# anything outside of DESTDIR; do this by reading and
 	# understanding the install part of the Makefiles.
 	# This is the preferred way to install.
-	emake DESTDIR="${D}" install || die "emake install failed"
+	#emake DESTDIR="${D}" install
 
 	# When you hit a failure with emake, do not just use make. It is
 	# better to fix the Makefiles to allow proper parallelization.
@@ -151,11 +175,11 @@ src_install() {
 	#	mandir="${D}"/usr/share/man \
 	#	infodir="${D}"/usr/share/info \
 	#	libdir="${D}"/usr/$(get_libdir) \
-	#	install || die "emake install failed"
+	#	install
 	# Again, verify the Makefiles!  We don't want anything falling
 	# outside of ${D}.
 
 	# The portage shortcut to the above command is simply:
 	#
-	#einstall || die "einstall failed"
-}
+	#einstall
+#}
