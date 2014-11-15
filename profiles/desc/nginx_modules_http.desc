@@ -1,1 +1,0 @@
-spnego_auth - This module implements adds SPNEGO support to nginx. It currently supports only Kerberos authentication via GSSAPI.
