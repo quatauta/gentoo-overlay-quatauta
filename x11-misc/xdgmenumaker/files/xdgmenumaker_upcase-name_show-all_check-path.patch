@@ -1,8 +1,8 @@
 diff --git i/src/xdgmenumaker w/src/xdgmenumaker
-index 143406a..2e43b3d 100755
+index 143406a..785240a 100755
 --- i/src/xdgmenumaker
 +++ w/src/xdgmenumaker
-@@ -1,9 +1,10 @@ import os
+@@ -1,9 +1,10 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
  
@@ -14,7 +14,26 @@ index 143406a..2e43b3d 100755
  import xdg.DesktopEntry as dentry
  import xdg.Exceptions as exc
  import xdg.BaseDirectory as bd
-@@ -171,6 +172,7 @@ def get_entry_info(desktopfile):
+@@ -165,12 +166,26 @@ def icon_full_path(icon):
+ 			icon = icon.get_filename()
+ 		return icon
+ 
++def exists_in_path(filename):
++	exists = False
++
++	if filename.startswith("/"):
++		exists = os.path.exists(filename)
++	else:
++		for path in os.path.expandvars("${PATH}").split(":"):
++			if os.path.exists(os.path.join(path, filename)):
++				exists = True
++				break
++
++	return exists
++
+ def get_entry_info(desktopfile):
+ 	global desktop
+ 	global seticon
  	show = True
  	de = dentry.DesktopEntry(filename = desktopfile)
  	name = de.getName().encode('utf-8')
@@ -22,7 +41,16 @@ index 143406a..2e43b3d 100755
  
  	if seticon == True:
  		# strip the directory and extension from the icon name
-@@ -226,12 +228,7 @@ def get_entry_info(desktopfile):
+@@ -188,6 +203,8 @@ def get_entry_info(desktopfile):
+ 
+ 	# removing any %U or %F from the exec line
+ 	command = de.getExec().partition('%')[0]
++	if not exists_in_path(command.split()[0]):
++		show = False
+ 
+ 	terminal = de.getTerminal()
+ 	if terminal is True:
+@@ -226,12 +243,7 @@ def get_entry_info(desktopfile):
  	else:
  		category = other
  
