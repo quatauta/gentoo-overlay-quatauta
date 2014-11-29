@@ -26,7 +26,10 @@ RDEPEND="
 	dev-python/pyxdg
 "
 
-PATCHES=( "${FILESDIR}/xdgmenumaker_upcase-name_show-all_check-path.patch" )
+PATCHES=( "${FILESDIR}/xdgmenumaker_ignore-show-only-in.patch"
+          "${FILESDIR}/xdgmenumaker_only-existing.patch"
+          "${FILESDIR}/xdgmenumaker_python2.patch"
+          "${FILESDIR}/xdgmenumaker_upcase-names.patch" )
 
 src_prepare() {
 	base_src_prepare
