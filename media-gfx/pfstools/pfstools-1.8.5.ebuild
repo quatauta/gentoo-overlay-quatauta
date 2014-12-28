@@ -16,7 +16,10 @@ KEYWORDS="~x86 ~amd64"
 IUSE="debug doc gdal imagemagick matlab netpbm octave +openexr opengl qt4 raw +tiff"
 
 DEPEND="
-qt4? ( || ( x11-libs/qt-gui:4 dev-qt/qtgui:4 ) )
+	<media-libs/ilmbase-2
+	<media-libs/openexr-2
+
+	qt4? ( || ( x11-libs/qt-gui:4 dev-qt/qtgui:4 ) )
 	tiff? ( media-libs/tiff )
 	netpbm? ( media-libs/netpbm )
 	imagemagick? ( media-gfx/imagemagick )
