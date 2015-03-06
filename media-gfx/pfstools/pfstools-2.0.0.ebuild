@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/pfstools/pfstools/${PV}/${P}.tgz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 IUSE="debug doc gdal imagemagick matlab netpbm octave +openexr opengl qt4 raw +tiff"
 
 DEPEND="
