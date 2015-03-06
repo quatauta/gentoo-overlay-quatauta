@@ -42,7 +42,7 @@ GEMS_DEPEND="
 	dev-libs/libxslt
 	dev-util/ragel
 	net-libs/nodejs
-	postgres? ( virtual/postgresql )
+	postgres? ( dev-db/postgresql )
 	mysql? ( virtual/mysql )"
 DEPEND="${GEMS_DEPEND}
 	>=dev-vcs/gitlab-shell-2.4
