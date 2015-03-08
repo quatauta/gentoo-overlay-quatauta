@@ -23,30 +23,38 @@ SRC_URI="https://github.com/gitlabhq/gitlabhq/archive/v${PV}.tar.gz -> ${P}.tar.
 RESTRICT="mirror"
 
 LICENSE="MIT"
-SLOT="7"
-KEYWORDS="amd64 x86"
-IUSE="mysql +postgres +unicorn"
+SLOT=$(get_version_component_range 1-2)
+KEYWORDS="~amd64 ~x86 ~arm"
+IUSE="memcached mysql +postgres +unicorn"
 
 ## Gems dependencies:
 #   charlock_holmes		dev-libs/icu
 #	grape, capybara		dev-libs/libxml2, dev-libs/libxslt
 #   json				dev-util/ragel
-#   pygments.rb			python 2.7+
+#   yajl-ruby			dev-libs/yajl
+#   pygments.rb			python 2.5+
 #   execjs				net-libs/nodejs, or any other JS runtime
 #   pg					dev-db/postgresql-base
 #   mysql				virtual/mysql
+#	rugged				net-libs/http-parser dev-libs/libgit2
 #
 GEMS_DEPEND="
 	dev-libs/icu
 	dev-libs/libxml2
 	dev-libs/libxslt
 	dev-util/ragel
+	dev-libs/yajl
 	net-libs/nodejs
 	postgres? ( dev-db/postgresql )
-	mysql? ( virtual/mysql )"
+	mysql? ( virtual/mysql )
+	memcached? ( net-misc/memcached )
+	net-libs/http-parser
+	>=dev-libs/libgit2-0.21.3"
 DEPEND="${GEMS_DEPEND}
-	>=dev-vcs/gitlab-shell-2.4
-	dev-vcs/git"
+	dev-vcs/git
+	>=dev-vcs/gitlab-shell-2.5.4
+	net-misc/curl
+	virtual/ssh"
 RDEPEND="${DEPEND}
 	dev-db/redis
 	virtual/mta"
@@ -54,23 +62,8 @@ ruby_add_bdepend "
 	virtual/rubygems
 	dev-ruby/bundler"
 
-#
-# fix-gemfile:
-#     Remove therubyracer that doesn't compile well on Gentoo (we're using
-#     nodejs instead that is faster and better). Also replace broken
-#     charlock_holmes version with fixed one.
-#
-# fix-project-name-regex:
-#     Allow project name to contain non-ASCII characters.
-#
-# fix-sendmail-config:
-#     Fix default settings to work with ssmtp that doesn't know '-t' argument.
-#
-#	"${P}-ldap-custom-mapping.patch"
 RUBY_PATCHES=(
-	"${P}-fix-gemfile.patch"
-	"${PN}-6.0.2-fix-sendmail-config.patch"
-	"${P}-email-custom-reply_to.patch"
+	"${P}-fix-checks-gentoo.patch"
 )
 
 MY_NAME="gitlab"
@@ -86,7 +79,6 @@ TEMP_DIR="/var/tmp/${MY_NAME}"
 SIDEKIQ_QUEUES="post_receive,mailer,system_hook,project_web_hook,gitlab_shell,common,default"
 
 all_ruby_prepare() {
-
 	# fix paths
 	local satellites_path="${TEMP_DIR}/repo_satellites"
 	local repos_path=/var/lib/git/repositories
@@ -187,7 +179,7 @@ all_ruby_install() {
 	local bundle_args="--deployment ${without:+--without ${without}}"
 
 	einfo "Running bundle install ${bundle_args} ..."
-	${RUBY} /usr/bin/bundle install ${bundle_args} || die "bundler failed"
+	${RUBY} /usr/bin/bundle install ${bundle_args} || die "bundler install failed"
 
 	# clean gems cache
 	rm -Rf vendor/bundle/ruby/*/cache
