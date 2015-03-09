@@ -39,7 +39,7 @@ IUSE="memcached mysql +postgres +unicorn"
 #	rugged				net-libs/http-parser dev-libs/libgit2
 #
 GEMS_DEPEND="
-	dev-libs/icu
+	=dev-ruby/charlock_holmes-0.6.9.4
 	dev-libs/libxml2
 	dev-libs/libxslt
 	dev-util/ragel
