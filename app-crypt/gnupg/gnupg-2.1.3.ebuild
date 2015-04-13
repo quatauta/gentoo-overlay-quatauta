@@ -96,6 +96,7 @@ src_configure() {
 		$(use_enable bzip2) \
 		$(use_enable gnutls) \
 		$(use_with ldap) \
+		$(use_enable ldap dirmngr) \
 		$(use_enable nls) \
 		$(use_with readline) \
 		CC_FOR_BUILD="$(tc-getBUILD_CC)"
