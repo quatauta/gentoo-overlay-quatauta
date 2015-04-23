@@ -19,7 +19,7 @@ IUSE=""
 
 CDEPEND="
 	dev-python/pyside[webkit,${PYTHON_USEDEP}]
-	app-crypt/yubikey-piv-tool
+	app-crypt/yubico-piv-tool
 	"
 
 DEPEND="
