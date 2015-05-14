@@ -5,7 +5,9 @@
 EAPI=5
 inherit eutils flag-o-matic toolchain-funcs git-2 prefix
 
-IUSE="nls xinerama bidi +truetype +imlib +slit +toolbar vim-syntax"
+IUSE="nls xinerama bidi +truetype +imlib +slit +systray +toolbar vim-syntax"
+
+REQUIRED_USE="systray? ( toolbar )"
 
 DESCRIPTION="Fluxbox is an X11 window manager featuring tabs and an iconbar"
 
@@ -64,13 +66,12 @@ src_prepare() {
 src_configure() {
 	use bidi && append-cppflags "$($(tc-getPKG_CONFIG) --cflags fribidi)"
 
-	econf ${myconf} \
-		$(use_enable bidi fribidi ) \
+	econf $(use_enable bidi fribidi ) \
 		$(use_enable imlib imlib2) \
 		$(use_enable nls) \
 		$(use_enable slit ) \
+		$(use_enable systray) \
 		$(use_enable toolbar ) \
-		$(use_enable toolbar systray ) \
 		$(use_enable truetype xft) \
 		$(use_enable xinerama) \
 		--sysconfdir="${EPREFIX}"/etc/X11/${PN} \
