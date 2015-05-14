@@ -1,6 +1,6 @@
-# Copyright 2014 Anton Ilin
-# Copyright 2014 Kaleb Elwert
-# Distributed under the terms of the MIT LICENSE
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/rcm/rcm-9999.ebuild,v 0.1 2015/05/14 19:22:00 jlec Exp $
 
 EAPI=5
 
