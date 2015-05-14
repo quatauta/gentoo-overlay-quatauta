@@ -1,0 +1,9 @@
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+# Keep them sorted
+
+slit - Enables the Fluxbox slit (or dock)
+systray - Enables the system tray in the Fluxbox toolbar
+toolbar - Enables the Fluxbox toolbar
