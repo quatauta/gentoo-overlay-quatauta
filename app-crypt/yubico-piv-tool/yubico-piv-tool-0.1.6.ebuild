@@ -7,7 +7,7 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Configure your PIV-enabled YubiKey with X509 certificate"
-HOMEPAGE="https://developers.yubico.com/yubikey-piv-tool/"
+HOMEPAGE="https://developers.yubico.com/yubico-piv-tool/"
 SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
 
 LICENSE="BSD-2"
