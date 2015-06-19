@@ -18,6 +18,7 @@ KEYWORDS="~amd64"
 IUSE=""
 
 CDEPEND="
+	dev-python/nose
 	dev-python/pyside[webkit,${PYTHON_USEDEP}]
 	app-crypt/yubico-piv-tool
 	"
