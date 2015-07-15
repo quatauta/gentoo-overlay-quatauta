@@ -12,14 +12,12 @@ SRC_URI="mirror://sourceforge/pfstools/pfstools/${PV}/${P}.tgz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="debug doc gdal imagemagick matlab netpbm octave +openexr opengl qt4 raw +tiff"
 
 DEPEND="
-	!<=media-gfx/pfstmo-1.5
-	!<=media-gfx/pfscalibration-1.6
-	<media-libs/ilmbase-2
-	<media-libs/openexr-2
+	!media-gfx/pfstmo
+	!media-gfx/pfscalibration
 
 	qt4? ( || ( x11-libs/qt-gui:4 dev-qt/qtgui:4 ) )
 	tiff? ( media-libs/tiff )
