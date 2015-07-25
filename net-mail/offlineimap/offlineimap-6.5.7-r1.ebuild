@@ -30,19 +30,11 @@ src_prepare() {
 
 src_compile() {
 	distutils-r1_src_compile
-	if use doc ; then
-		cd docs
-		rst2man.py MANUAL.rst offlineimap.1 || die "building manpage failed"
-	fi
 }
 
 src_install() {
 	distutils-r1_src_install
 	dodoc offlineimap.conf offlineimap.conf.minimal
-	if use doc ; then
-		cd docs
-		doman offlineimap.1
-	fi
 }
 
 pkg_postinst() {
