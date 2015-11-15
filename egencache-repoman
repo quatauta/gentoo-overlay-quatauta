@@ -1,16 +1,10 @@
 #!/bin/bash
 
-export PORTAGE_GPG_DIR="${HOME}/.gnupg"
-export PORTAGE_GPG_KEY="0xD48FAEF69FF1FA23"
-
 REPO_NAME_FILE="${0%/*}/profiles/repo_name"
 REPO_NAME="$(cat "${REPO_NAME_FILE}")"
 
-egencache --repo="${REPO_NAME}" --update-manifests --gpg-dir="${PORTAGE_GPG_DIR}" --gpg-key="${PORTAGE_GPG_KEY}"
+repoman manifest
 egencache --repo="${REPO_NAME}" --update-use-local-desc
 egencache --repo="${REPO_NAME}" --update-pkg-desc-index
 sudo egencache --repo="${REPO_NAME}" --update
-
-repoman manifest
 repoman full -d
-repoman commit
