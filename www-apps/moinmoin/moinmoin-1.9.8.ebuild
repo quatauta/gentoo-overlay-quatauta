@@ -103,6 +103,5 @@ pkg_postinst() {
 	ewarn "README.migration in /usr/share/doc/${PF}"
 	ewarn
 
-	distutils_pkg_postinst
 	webapp_pkg_postinst
 }
