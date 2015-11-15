@@ -1,12 +1,12 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI="5"
 
 inherit eutils cmake-utils
 
-DESCRIPTION="Reading, writing, manipulating and viewing high-dynamic range (HDR) images and video frames"
+DESCRIPTION="Manipulating and viewing high-dynamic range (HDR) images and video frames"
 HOMEPAGE="http://pfstools.sourceforge.net/"
 SRC_URI="mirror://sourceforge/pfstools/pfstools/${PV}/${P}.tgz -> ${P}.tar.gz"
 
@@ -19,8 +19,8 @@ DEPEND="
 	!media-gfx/pfstmo
 	!media-gfx/pfscalibration
 
-	qt4? ( || ( x11-libs/qt-gui:4 dev-qt/qtgui:4 ) )
-	tiff? ( media-libs/tiff )
+	qt4? ( dev-qt/qtgui:4 )
+	tiff? ( media-libs/tiff:* )
 	netpbm? ( media-libs/netpbm )
 	imagemagick? ( media-gfx/imagemagick )
 	openexr? ( media-libs/openexr )
