@@ -1,8 +1,0 @@
-#!/bin/bash
-
-REPO_NAME_FILE="${0%/*}/profiles/repo_name"
-REPO_NAME="$(cat "${REPO_NAME_FILE}")"
-
-for i in {1..3} ; do
-    egencache --update --repo="${REPO_NAME}" --sign-manifests=n --update-use-local-desc --update-manifests
-done
