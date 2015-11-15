@@ -1,0 +1,11 @@
+app-admin/rcm 9999: Management suite for dotfiles
+app-crypt/yubico-piv-tool 1.1.2: Configure your PIV-enabled YubiKey with X509 certificate
+app-crypt/yubikey-piv-manager 1.1.0: Configure your PIV-enabled YubiKey with X509 certificate
+dev-ruby/bundler 1.9.8: An easy way to vendor gem dependencies
+media-gfx/pfstools 2.0.4: Manipulating and viewing high-dynamic range (HDR) images and video frames
+net-mail/mailcheck 1.91.2: Check multiple mailboxes/maildirs for mail
+net-mail/offlineimap 6.5.7-r1: Powerful IMAP/Maildir synchronization and reader support
+sys-process/netatop 0.7: Kernel module to collect per process network statistics for atop
+www-apps/moinmoin 1.9.8: Python WikiClone
+x11-misc/xdgmenumaker 9999: Command line tool that generates XDG menus for several window managers
+x11-wm/fluxbox 9999-r2: Fluxbox is an X11 window manager featuring tabs and an iconbar
