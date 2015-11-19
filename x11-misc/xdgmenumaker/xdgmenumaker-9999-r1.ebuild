@@ -31,19 +31,6 @@ PATCHES=( "${FILESDIR}/xdgmenumaker_ignore-show-only-in.patch"
 		  "${FILESDIR}/xdgmenumaker_python2.patch"
 		  "${FILESDIR}/xdgmenumaker_upcase-names.patch" )
 
-src_prepare() {
-	base_src_prepare
-	sed -i -e "s|/usr/share/|${DESTTREE}/share/|g" \
-		"src/xdgmenumaker" || die "Adjusting paths in src/xdgmenumaker failed"
-}
-
-src_compile() {
-	txt2tags -o "man/xdgmenumaker.1" "man/xdgmenumaker.t2t" || die "Creating man page failed"
-}
-
 src_install() {
-	dobin "src/xdgmenumaker"
-	doman "man/xdgmenumaker.1"
-	insinto "/usr/share/desktop-directories"
-	doins "desktop-directories"/*
+	emake DESTDIR="${D}" PREFIX="${DESTTREE}" man install
 }
