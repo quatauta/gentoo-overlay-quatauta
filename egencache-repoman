@@ -7,4 +7,5 @@ repoman manifest
 egencache --repo="${REPO_NAME}" --update-use-local-desc
 egencache --repo="${REPO_NAME}" --update-pkg-desc-index
 sudo egencache --repo="${REPO_NAME}" --update
+chown -R --reference=. *
 repoman full -d
