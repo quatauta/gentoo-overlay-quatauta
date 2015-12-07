@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=sys-apps/pcsc-lite
+DESCRIPTION=Configure your PIV-enabled YubiKey with X509 certificate
+EAPI=5
+HOMEPAGE=https://developers.yubico.com/yubico-piv-tool/
+KEYWORDS=~amd64
+LICENSE=BSD-2
+RDEPEND=sys-apps/pcsc-lite
+SLOT=0
+SRC_URI=https://developers.yubico.com/yubico-piv-tool/Releases/yubico-piv-tool-1.2.0.tar.gz
+_eclasses_=eutils	d9bd2ddd85a58e470b49ca997e255a4c	multilib	3972ca401cf7dbb430df9995f5d8d580	toolchain-funcs	7a212e5e01adfa4805c9978366e6ee85
+_md5_=6cabfe87fa1d561b055fdb2e8653c0a1
