@@ -19,6 +19,8 @@ DEPEND="
 	!media-gfx/pfstmo
 	!media-gfx/pfscalibration
 
+	media-libs/opencv
+
 	qt4? ( dev-qt/qtgui:4 )
 	tiff? ( media-libs/tiff:* )
 	netpbm? ( media-libs/netpbm )
