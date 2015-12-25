@@ -7,4 +7,5 @@ media-gfx/pfstools:matlab - Enable support for matlab
 media-gfx/pfstools:netpbm - Enable support for netpbm file formats using media-libs/netpbm
 media-gfx/pfstools:octave - Use sci-mathematics/octave
 net-mail/offlineimap:sqlite - Enable runtime support for sqlite mail status backend.
+net-misc/dropbox:librsync-bundled - Use bundled librsync library
 net-news/liferea:libnotify - Enable popup notifications
