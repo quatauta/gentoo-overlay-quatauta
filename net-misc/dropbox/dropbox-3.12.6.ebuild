@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -28,7 +28,7 @@ DEPEND="librsync-bundled? ( dev-util/patchelf )"
 # missing symbol (CtlColorEvent). #443686
 RDEPEND="
 	X? (
-		dev-libs/glib:2
+		dev-libs/glib
 		dev-qt/qtdbus:5
 		dev-qt/qtgui:5
 		dev-qt/qtnetwork:5
@@ -36,10 +36,10 @@ RDEPEND="
 		dev-qt/qtquick1:5
 		dev-qt/qtwebkit:5
 		dev-qt/qtwidgets:5
-		media-libs/libpng:1.2
+		media-libs/libpng
 		sys-libs/zlib
 		virtual/jpeg
-		x11-libs/gtk+:2
+		x11-libs/gtk+
 		x11-libs/libSM
 		x11-libs/libXinerama
 		x11-libs/libXxf86vm
@@ -55,10 +55,7 @@ RDEPEND="
 	net-misc/wget
 	>=sys-devel/gcc-4.2.0
 	sys-libs/zlib
-	|| (
-		sys-libs/ncurses:5/5
-		sys-libs/ncurses:0/5
-	)"
+	sys-libs/ncurses"
 
 src_unpack() {
 	unpack ${A}
