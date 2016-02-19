@@ -2,10 +2,11 @@
 /cache
 /dtd
 /glsa
+/herds.xml
+/md5-cache
 /md5-cache
 /news
-/herds.xml
+/pkg_desc_index
 /timestamp
 /timestamp.chk
 /timestamp.x
-/pkg_desc_index
