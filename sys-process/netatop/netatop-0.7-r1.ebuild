@@ -38,6 +38,8 @@ src_install() {
 	doman "man/netatop.4"
 	doman "man/netatopd.8"
 	dosbin "daemon/netatopd"
+	insinto /usr/lib/modules-load.d/
+	newins "${FILESDIR}"/modules-load.d.conf netatop.conf
 }
 
 pkg_postinst() {
