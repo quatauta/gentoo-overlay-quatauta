@@ -5,7 +5,6 @@ dev-ruby/pry 0.10.3-r1: Pry is a powerful alternative to the standard IRB shell 
 dev-ruby/vcard 0.2.12-r1: Ruby vcard support extracted from Vpim
 media-gfx/pfstools 2.0.4-r1 2.0.5: Manipulating and viewing high-dynamic range (HDR) images and video frames
 net-mail/mailcheck 1.91.2: Check multiple mailboxes/maildirs for mail
-net-mail/offlineimap 6.7.0.1 7.0.3: Powerful IMAP/Maildir synchronization and reader support
 net-news/liferea 1.11.6 1.11.7: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 sci-geosciences/osm-gps-map 1.1.0: A gtk+ viewer for OpenStreetMap files
 sys-process/netatop 1.0: Kernel module to collect per process network statistics for atop
