@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Configure your PIV-enabled YubiKey with X509 certificate"
 HOMEPAGE="https://developers.yubico.com/yubikey-piv-manager/"
-SRC_URI="https://developers.yubico.com/${PN}/Releases/${P}.tar.gz"
+SRC_URI="https://github.com/Yubico/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
