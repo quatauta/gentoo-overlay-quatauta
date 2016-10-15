@@ -2,6 +2,7 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
+app-emacs/auctex:preview-latex - Use bundled preview-latex
 media-gfx/pfstools:gdal - Enable using sci-libs/gdal for geospatial data formats
 media-gfx/pfstools:matlab - Enable support for matlab
 media-gfx/pfstools:netpbm - Enable support for netpbm file formats using media-libs/netpbm
