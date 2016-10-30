@@ -3,6 +3,7 @@
 # * generated automatically using egencache *
 
 app-emacs/auctex:preview-latex - Use bundled preview-latex
+dev-util/gitlab-ci-multi-runner-bin:docker - Add user gitlab_runner to group docker to allow access to app-emulation/docker
 media-gfx/pfstools:gdal - Enable using sci-libs/gdal for geospatial data formats
 media-gfx/pfstools:matlab - Enable support for matlab
 media-gfx/pfstools:netpbm - Enable support for netpbm file formats using media-libs/netpbm

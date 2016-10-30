@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>daniel.schoemer@gmx.net</email>
+    <name>Daniel Schömer</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="gitlab">gitlab-org/gitlab-ci-multi-runner</remote-id>
+  </upstream>
+  <use>
+	<flag name="docker">
+	  Add user gitlab_runner to group docker to allow access to <pkg>app-emulation/docker</pkg>
+	</flag>
+  </use>
+</pkgmetadata>

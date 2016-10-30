@@ -1,0 +1,14 @@
+[Unit]
+Description=GitLab CI Multi Runner
+After=syslog.target network.target
+ConditionFileIsExecutable=/usr/bin/gitlab-ci-multi-runner
+
+[Service]
+StartLimitInterval=5
+StartLimitBurst=10
+ExecStart=/usr/bin/gitlab-ci-multi-runner "run" "--working-directory" "/var/lib/gitlab-runner" "--config" "/etc/gitlab-runner/config.toml" "--service" "gitlab-runner" "--syslog" "--user" "gitlab_runner"
+Restart=always
+RestartSec=120
+
+[Install]
+WantedBy=multi-user.target
