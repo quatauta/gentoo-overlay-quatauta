@@ -14,6 +14,4 @@ sci-geosciences/osm-gps-map 1.1.0: A gtk+ viewer for OpenStreetMap files
 sys-process/netatop 1.0: Kernel module to collect per process network statistics for atop
 www-apps/moinmoin 1.9.8: Python WikiClone
 x11-misc/xdgmenumaker 9999-r1: Command line tool that generates XDG menus for several window managers
-x11-themes/clearlooks-phenix 9999-r1: Clearlooks-Phenix is a GTK+ 3 port of Clearlooks, the default theme for GNOME 2
-x11-themes/mate-themes 3.20.9: A set of MATE themes, with sets for users with limited or low vision
 x11-wm/fluxbox 9999-r2: Fluxbox is an X11 window manager featuring tabs and an iconbar
