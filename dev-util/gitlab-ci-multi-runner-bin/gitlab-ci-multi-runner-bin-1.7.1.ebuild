@@ -19,9 +19,6 @@ SRC_URI="https://packages.gitlab.com/runner/${MY_PN}/packages/${SRC_DIST}/${MY_P
 IUSE="docker"
 RDEPEND="docker? ( app-emulation/docker )"
 
-MY_USERNAME="gitlab_runner"
-MY_HOMEDIR="/var/lib/gitlab-runner"
-
 src_unpack() {
 	mkdir "${S}"
 	cd "${S}"
@@ -47,15 +44,15 @@ src_install() {
 	touch "${D}/etc/gitlab-runner/config.toml"
 	chmod 600 "${D}/etc/gitlab-runner/config.toml"
 
-	dodir "${MY_HOMEDIR}"
+	dodir "/var/lib/gitlab-runner"
 }
 
 pkg_setup() {
 	if use docker ; then
-		enewuser "${MY_USERNAME}" -1 /bin/bash "${MY_HOMEDIR}" "docker"
-		elog "User ${MY_USERNAME} added to group docker."
+		enewuser "gitlab_runner" -1 /bin/bash "/var/lib/gitlab-runner" "docker"
+		elog "User gitlab_runner added to group docker."
 		elog "This is insecure and allows root access."
 	else
-		enewuser "${MY_USERNAME}" -1 /bin/bash "${MY_HOMEDIR}"
+		enewuser "gitlab_runner" -1 /bin/bash "/var/lib/gitlab-runner"
 	fi
 }
