@@ -45,6 +45,7 @@ src_install() {
 	chmod 600 "${D}/etc/gitlab-runner/config.toml"
 
 	dodir "/var/lib/gitlab-runner"
+	fowners gitlab_runner "/var/lib/gitlab-runner"
 }
 
 pkg_setup() {
