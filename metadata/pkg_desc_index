@@ -5,7 +5,7 @@ dev-python/vdirsyncer 0.14.0: Synchronize calendars and contacts
 dev-ruby/awesome_print 1.7.0-r1: Library to pretty print Ruby objects in full color with proper indentation
 dev-ruby/pry 0.10.3-r1: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/vcard 0.2.12-r1: Ruby vcard support extracted from Vpim
-dev-util/gitlab-ci-multi-runner-bin 1.7.1: The binary Fedora 23 package of the GitLab CI Multi Runner.
+dev-util/gitlab-ci-multi-runner-bin 1.8.1: The binary Fedora 23 package of the GitLab CI Multi Runner.
 dev-vcs/git-extras 9999: Little git extras
 media-gfx/pfstools 2.0.5: Manipulating and viewing high-dynamic range (HDR) images and video frames
 net-mail/mailcheck 1.91.2: Check multiple mailboxes/maildirs for mail
