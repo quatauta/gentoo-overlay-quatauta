@@ -9,12 +9,3 @@ media-gfx/pfstools:matlab - Enable support for matlab
 media-gfx/pfstools:netpbm - Enable support for netpbm file formats using media-libs/netpbm
 media-gfx/pfstools:octave - Use sci-mathematics/octave
 net-news/liferea:libnotify - Enable popup notifications
-sys-auth/sssd:acl - Build and use the cifsidmap plugin
-sys-auth/sssd:augeas - Build internal configuration library
-sys-auth/sssd:autofs - Build helper to let net-fs/autofs use sssd provided information
-sys-auth/sssd:locator - Install sssd's Kerberos plugin
-sys-auth/sssd:manpages - Build man pages with dev-libs/libxslt
-sys-auth/sssd:netlink - Add support for netlink protocol via dev-libs/libnl
-sys-auth/sssd:nfsv4 - Add support for the nfsv4 idmapd plugin provided by net-libs/libnfsidmap
-sys-auth/sssd:ssh - Build helper to let net-misc/openssh use sssd provided information
-sys-auth/sssd:sudo - Build helper to let app-admin/sudo use sssd provided information
