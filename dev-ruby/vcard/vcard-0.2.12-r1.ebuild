@@ -3,7 +3,7 @@
 # $Id$
 
 EAPI=5
-USE_RUBY="ruby20 ruby21 ruby22 ruby23"
+USE_RUBY="ruby23 ruby24"
 
 # Avoid the complexity of the "rake" recipe and run testrb-2 manually.
 RUBY_FAKEGEM_RECIPE_TEST=none
