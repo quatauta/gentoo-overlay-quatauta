@@ -19,6 +19,7 @@ EGIT_REPO_URI="https://github.com/thoughtbot/rcm.git"
 DEPEND="dev-ruby/mustache"
 
 src_prepare() {
+	eapply_user
 	eautoreconf
 	maint/autocontrib man/rcm.7.mustache
 }

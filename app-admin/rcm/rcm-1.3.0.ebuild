@@ -19,6 +19,7 @@ EGIT_COMMIT="v1.3.0"
 DEPEND="dev-ruby/mustache"
 
 src_prepare() {
+	eapply_user
 	eautoreconf
 	maint/autocontrib man/rcm.7.mustache
 }
