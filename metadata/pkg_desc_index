@@ -1,5 +1,6 @@
 app-admin/rcm 1.3.0 9999: Management suite for dotfiles
-app-crypt/yubikey-piv-manager 1.4.1: Configure your PIV-enabled YubiKey with X509 certificate
+app-crypt/seahorse 3.20.0-r1: A GNOME application for managing encryption keys
+app-crypt/yubikey-piv-manager 1.4.2: Configure your PIV-enabled YubiKey with X509 certificate
 app-emacs/auctex 9999: Extended support for (La)TeX, Texinfo and BibTeX files
 dev-python/vdirsyncer 0.14.1: Synchronize calendars and contacts
 dev-ruby/awesome_print 1.7.0-r1: Library to pretty print Ruby objects in full color with proper indentation
@@ -7,10 +8,12 @@ dev-ruby/pry 0.10.3-r1: Pry is a powerful alternative to the standard IRB shell 
 dev-ruby/vcard 0.2.12-r1: Ruby vcard support extracted from Vpim
 dev-util/gitlab-ci-multi-runner-bin 1.8.1 1.9.0: The binary Fedora 23 package of the GitLab CI Multi Runner.
 dev-vcs/git-extras 9999: Little git extras
-media-gfx/pfstools 2.0.5: Manipulating and viewing high-dynamic range (HDR) images and video frames
+media-gfx/pfstools 2.0.6: Manipulating and viewing high-dynamic range (HDR) images and video frames
+net-libs/webkit-gtk 2.4.11-r200: Open source web browser engine
 net-mail/mailcheck 1.91.2: Check multiple mailboxes/maildirs for mail
 net-news/liferea 1.11.7 1.12_rc3: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 sci-geosciences/osm-gps-map 1.1.0: A gtk+ viewer for OpenStreetMap files
+sys-boot/multibootusb 8.9.0: Boot multiple live Linux distros from an USB flash drive
 sys-process/netatop 1.0: Kernel module to collect per process network statistics for atop
 www-apps/moinmoin 1.9.8: Python WikiClone
 x11-misc/xdgmenumaker 9999-r1: Command line tool that generates XDG menus for several window managers

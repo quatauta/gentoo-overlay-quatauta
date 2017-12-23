@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils cmake-utils
 
@@ -13,22 +12,23 @@ SRC_URI="mirror://sourceforge/pfstools/pfstools/${PV}/${P}.tgz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="debug doc gdal imagemagick matlab netpbm octave +openexr opengl qt4 raw +tiff"
+IUSE="doc imagemagick matlab netpbm octave +openexr opengl qt4 raw +tiff"
 
 DEPEND="
 	!media-gfx/pfstmo
 	!media-gfx/pfscalibration
 
 	media-libs/opencv
+	sci-libs/fftw:3.0
+	sci-libs/gsl
 
 	qt4? ( dev-qt/qtgui:4 )
 	tiff? ( media-libs/tiff:* )
 	netpbm? ( media-libs/netpbm )
-	imagemagick? ( media-gfx/imagemagick )
+	imagemagick? ( <media-gfx/imagemagick-7 )
 	openexr? ( media-libs/openexr )
 	raw? ( media-gfx/dcraw )
 	octave? ( sci-mathematics/octave )
-	gdal? ( sci-libs/gdal )
 	opengl? ( media-libs/freeglut )
 	"
 
@@ -41,16 +41,14 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_enable debug)
-		$(cmake-utils_use_enable qt4 qt)
-		$(cmake-utils_use_enable imagemagick)
-		$(cmake-utils_use_enable octave)
-		$(cmake-utils_use_enable openexr)
-		$(cmake-utils_use_enable netpbm)
-		$(cmake-utils_use_enable tiff)
-		$(cmake-utils_use_enable gdal)
-		$(cmake-utils_use_enable opengl)
-		$(cmake-utils_use_enable matlab)
+		-DWITH_QT="$(usex qt4)"
+		-DWITH_ImageMagick="$(usex imagemagick)"
+		-DWITH_Octave="$(usex octave)"
+		-DWITH_OpenEXR="$(usex openexr)"
+		-DWITH_NetPBM="$(usex netpbm)"
+		-DWITH_TIFF="$(usex tiff)"
+		-DWITH_pfsglview="$(usex opengl)"
+		-DWITH_MATLAB="$(usex matlab)"
 	)
 
 	cmake-utils_src_configure

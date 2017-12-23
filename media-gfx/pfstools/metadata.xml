@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<use>
-		<flag name="gdal">Enable using <pkg>sci-libs/gdal</pkg> for geospatial data formats</flag>
 		<flag name="matlab">Enable support for matlab</flag>
 		<flag name="netpbm">Enable support for netpbm file formats using <pkg>media-libs/netpbm</pkg></flag>
 		<flag name="octave">Use <pkg>sci-mathematics/octave</pkg></flag>

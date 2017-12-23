@@ -9,8 +9,8 @@
     <remote-id type="gitlab">gitlab-org/gitlab-ci-multi-runner</remote-id>
   </upstream>
   <use>
-	<flag name="docker">
-	  Add user gitlab_runner to group docker to allow access to <pkg>app-emulation/docker</pkg>
-	</flag>
+    <flag name="docker">
+      Add user gitlab_runner to group docker to allow access to <pkg>app-emulation/docker</pkg>
+    </flag>
   </use>
 </pkgmetadata>
